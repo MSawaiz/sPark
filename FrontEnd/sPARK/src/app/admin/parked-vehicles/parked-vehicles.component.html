@@ -1,0 +1,115 @@
+<div id="fg-title">
+    <div class="titleButtons">
+        <div id="refresh">
+            <button (click)="refresh()">
+                <figure>
+                    <img src="assets/images/refresh.png" alt="Refresh Icon">
+                    <figcaption>Refresh</figcaption>
+                </figure>
+            </button>
+        </div>
+
+        <div id="filter">
+            <button (click)="filter(filtermodal)" (click)="getMap()">
+                <figure>
+                    <img src="assets/images/filter(orange).png" alt="Filter Icon">
+                    <figcaption>Filter</figcaption>
+                </figure>
+            </button>
+        </div>
+    </div>
+
+    <div class="titleLabel">
+        <label>
+            PARKED VEHICLES' STATUS
+        </label>
+    </div>
+</div>
+<div class="pvtablediv">
+    <table class="table table-bordered table-dark table-striped">
+        <thead>
+            <tr>
+                <th>LICENSE PLATE NUMBER</th>
+                <th>FLOOR</th>
+                <th>LANE</th>
+                <th>CHECK IN TIME</th>
+                <th>FINE</th>
+                <th>SIZE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let veh of vehicles">
+                <td>{{veh.vehicle.licensePlateNumber}}</td>
+                <td>{{veh.location.floor}}</td>
+                <td>{{veh.location.lane}}</td>
+                <td>{{veh.checkinTime}}</td>
+                <td>{{veh.fine}}</td>
+                <td>{{veh.vehicle.category}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #filtermodal let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="mpvpopup-title">
+            <label>
+                FILTER SEARCH
+            </label>
+        </div>
+        <div id="mpvtablediv">
+            <form name="updform" action="">
+                <table class="uptable">
+                    <tr>
+                        <th>License Plate Number</th>
+                        <td><input type="text" name="LPN" [(ngModel)]="LPN"></td>
+                        <th>Size</th>
+                        <td>
+                            <input type="radio" name="sz" value="All" [(ngModel)]="size">All<br>
+                            <input type="radio" name="sz" value="Small" [(ngModel)]="size">Small<br>
+                            <input type="radio" name="sz" value="Medium" [(ngModel)]="size">Medium<br>
+                            <input type="radio" name="sz" value="Large" [(ngModel)]="size">Large
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Floor</th>
+                        <td>
+                            <select name="floors" [(ngModel)]="floor">
+                                <option value="null"></option>
+                                <option *ngFor="let f of floors.floor let i=index" value={{i}}>Floor {{i+1}}</option>
+                            </select>
+                        </td>
+                        <div *ngIf="floor != null && floor != 'null'">
+                            <th>Lane</th>
+                            <td>
+                                <select name="lanes" [(ngModel)]="lane">
+                                    <option value="null"></option>
+                                    <option *ngFor="let l of floors.floor[floor].lane" value="l.name">{{l.name}}
+                                    </option>
+                                </select>
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <th>Checkin Date</th>
+                        <td><input type="date" name="datef" [(ngModel)]="cidatef"></td>
+                        <td>to <input disabled type="date" name="datet" [(ngModel)]="cidatet"></td>
+                    </tr>
+                    <tr>
+                        <th>Checkin Time</th>
+                        <td><input type="time" name="timef" [(ngModel)]="citimef"></td>
+                        <td>to <input disabled type="time" name="timet" [(ngModel)]="citimet"></td>
+                    </tr>
+                    <tr>
+                        <th>Fine</th>
+                        <td> <input type="checkbox" name="l" [(ngModel)]="fine"></td>
+                    </tr>
+                </table>
+                <button (click)="search()" (click)="modal.close('OK')">Search</button>
+            </form>
+        </div>
+    </div>
+</ng-template>

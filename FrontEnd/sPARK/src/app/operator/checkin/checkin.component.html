@@ -1,0 +1,130 @@
+<div id="backgroundImg">
+    <img src="assets/images/background.jpg" alt="">
+    <div class="cimainDiv">
+        <div class="cifg-text">
+            <h1 id="title">
+                <img src="assets/images/logo.png" />
+                <div id="h">
+                    sPARK
+                </div>
+            </h1>
+
+            <div class="cifg-title">
+                <label>
+                    CHECK-IN
+                </label>
+                <div id="changepassword">
+                    <a (click)='open(chngpswd)'>CHANGE PASSWORD</a>
+                </div>
+                <div class="signoutci">
+                    <a style="color: rgb(218, 218, 27);"(click)="logout()">SIGN OUT</a>
+                </div>
+            </div>
+        </div>
+        <webcam [videoOptions]="videoOptions" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+            [imageQuality]="1" (initError)="handleInitError($event)"></webcam>
+        <div id="token">
+            <h1>Token Details:</h1>
+            <div id="tokendetails">
+                <table border="3">
+                    <tr>
+                        <th>Token ID:</th>
+                        <td>{{tokenNum}}</td>
+                    </tr>
+                    <tr>
+                        <th>Category: </th>
+                        <td>{{category}}</td>
+                    </tr>
+                    <tr>
+                        <th>Floor:</th>
+                        <td>{{floor}}</td>
+                    </tr>
+                    <tr>
+                        <th>Lane:</th>
+                        <td>{{lane}}</td>
+                    </tr>
+                    <tr>
+                        <th>Checkin time:</th>
+                        <td>{{checkInTime}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="checkin-btn">
+            <button (click)="triggerSnapshot();">CHECK IN VEHICLE</button>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #chngpswd let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                CHANGE PASSWORD
+            </label>
+        </div>
+        <div id="tablediv-chngpswd">
+            <form #fcp="ngForm" name="chngpswd-form" action="">
+                <table>
+                    <tr>
+                        <th>Enter Current Password</th>
+                        <td>
+                            <div *ngIf="oldpassword.touched && !oldpassword.valid">{{opp.open()}} </div>
+                            <div *ngIf="oldpassword.valid">{{opp.close()}}</div>
+                            <input type="password" name="oldpswd" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #opp="ngbPopover" triggers="manual"
+                                #oldpassword="ngModel" [(ngModel)]="oldpswd">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Enter New Password</th>
+                        <td>
+                            <div *ngIf="newpassword.touched && !newpassword.valid">
+                                <div *ngIf="newpassword.errors.required" popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #npp0="ngbPopover" triggers="manual">
+                                    {{npp0.open()}}
+                                </div>
+                                <div *ngIf="newpassword.errors.minlength" popoverClass="my-custom-class"
+                                    ngbPopover="Password must be at least 5 characters long!" #npp1="ngbPopover"
+                                    triggers="manual">
+                                    {{npp1.open()}}
+                                </div>
+                                <div *ngIf="newpassword.errors.pattern" popoverClass="my-custom-class"
+                                    ngbPopover="Password must contain at least one digit and one alphabet!"
+                                    #npp2="ngbPopover" triggers="manual">
+                                    {{npp2.open()}}
+                                </div>
+                            </div>
+                            <input type="password" required name="newpswd" minlength="5"
+                                pattern="^(?=.*\d)(?=.*([a-z]|[A-Z]))(?!.*\s).*$" #newpassword="ngModel"
+                                [(ngModel)]="newpswd">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Re-Enter New Password</th>
+                        <td>
+                            <div *ngIf="rnewpass.touched && !rnewpass.valid">
+                                <div *ngIf="rnewpass.errors.required" popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #rnpp1="ngbPopover" triggers="manual">
+                                    {{rnpp1.open()}}
+                                </div>
+                            </div>
+
+                            <div *ngIf="(rnewpass.value != newpassword.value) && rnewpass.touched" popoverClass="my-custom-class"
+                                ngbPopover="Password does not match!" #rnpp2="ngbPopover" triggers="manual">
+                                {{rnpp2.open()}}
+                            </div>
+                            <input type="password" name="rnewpswd" required #rnewpass="ngModel" [(ngModel)]="rnewpswd">
+                        </td>
+                    </tr>
+                </table>
+                <button [disabled]="!fcp.valid || rnewpass.value != newpassword.value" (click)="updatePass()"
+                    (click)="modal.close('OK')">Save</button>
+            </form>
+        </div>
+    </div>
+</ng-template>

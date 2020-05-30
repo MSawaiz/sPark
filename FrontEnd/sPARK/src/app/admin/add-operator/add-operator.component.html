@@ -1,0 +1,114 @@
+<div id="fg-text">
+    <div id="fg-title">
+        <label>
+            ADD OPERATOR
+        </label>
+    </div>
+
+    <div id="aotablediv" style="margin-top: -0.35em;">
+        <form #f="ngForm" name="addForm" method="POST" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <td>
+                        <div *ngIf="firstName.touched && !firstName.valid">{{fnp.open()}} </div>
+                        <div *ngIf="firstName.valid">{{fnp.close()}}</div>
+                        <input type="text" name="fname" required popoverClass="my-custom-class"
+                            ngbPopover="This field is required!" #fnp="ngbPopover" triggers="manual"
+                            #firstName="ngModel" [(ngModel)]="fname">
+                    </td>
+                    <th>Duty Start Time</th>
+                    <td>
+                        <div *ngIf="dstime.touched && !dstime.valid">{{dstp.open()}} </div>
+                        <div *ngIf="dstime.valid">{{dstp.close()}}</div>
+                        <input type="time" name="dst" required popoverClass="my-custom-class"
+                            ngbPopover="This field is required!" #dstp="ngbPopover" triggers="manual" #dstime="ngModel"
+                            [(ngModel)]="dst">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td>
+                        <div *ngIf="lastName.touched && !lastName.valid">{{lnp.open()}} </div>
+                        <div *ngIf="lastName.valid">{{lnp.close()}}</div>
+                        <input type="text" name="lname" required popoverClass="my-custom-class"
+                            ngbPopover="This field is required!" #lnp="ngbPopover" triggers="manual" #lastName="ngModel"
+                            [(ngModel)]="lname">
+                    </td>
+                    <th>Duty End Time</th>
+                    <td>
+                        <div *ngIf="detime.touched && !detime.valid">{{detp.open()}} </div>
+                        <div *ngIf="detime.valid">{{detp.close()}}</div>
+                        <input type="time" name="det" required popoverClass="my-custom-class"
+                            ngbPopover="This field is required!" #detp="ngbPopover" triggers="manual" #detime="ngModel"
+                            [(ngModel)]="det">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>
+                        <div *ngIf="username.touched && !username.valid">{{unp.open()}} </div>
+                        <div *ngIf="username.valid">{{unp.close()}}</div>
+                        <input type="text" name="uname" required popoverClass="my-custom-class"
+                            ngbPopover="This field is required!" #unp="ngbPopover" triggers="manual" #username="ngModel"
+                            [(ngModel)]="uname">
+                    </td>
+                    <th>Duty Post</th>
+                    <td>
+                        <div *ngIf="dutypost.touched && !dutypost.valid">{{dpp.open()}} </div>
+                        <div *ngIf="dutypost.valid">{{dpp.close()}}</div>
+                        <select name="dutyPost" required popoverClass="my-custom-class"
+                            ngbPopover="This field is required!" #dpp="ngbPopover" triggers="manual" #dutypost="ngModel"
+                            [(ngModel)]="dp">
+                            <option *ngFor="let p of posts.post.entrancePost" value={{p.name}}>{{p.name}}
+                            <option *ngFor="let p of posts.post.exitPost" value={{p.name}}>{{p.name}}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Password</th>
+                    <td>
+                        <div *ngIf="password.touched && !password.valid">
+                            <div *ngIf="password.errors.required" popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #pp1="ngbPopover" triggers="manual">
+                                {{pp1.open()}}
+                            </div>
+                            <div *ngIf="password.errors.minlength" popoverClass="my-custom-class"
+                                ngbPopover="Password must be at least 5 characters long!" #pp2="ngbPopover"
+                                triggers="manual">
+                                {{pp2.open()}}
+                            </div>
+                            <div *ngIf="password.errors.pattern" popoverClass="my-custom-class"
+                                ngbPopover="Password must contain at least one digit and one alphabet!"
+                                #pp3="ngbPopover" triggers="manual">
+                                {{pp3.open()}}
+                            </div>
+                        </div>
+                        <input type="password" name="pass" required minlength="5"
+                            pattern="^(?=.*\d)(?=.*([a-z]|[A-Z]))(?!.*\s).*$" #password="ngModel" [(ngModel)]="pass">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        <div *ngIf="image.touched && !image.valid">
+                            <div *ngIf="image.errors.required" popoverClass="my-custom-class"
+                                ngbPopover="Image is required!" #ip1="ngbPopover" triggers="manual">
+                                {{ip1.open()}}
+                            </div>
+                            <div *ngIf="image.errors.pattern" popoverClass="my-custom-class"
+                                ngbPopover="Only png or jpg or jpeg files are accepted" #ip2="ngbPopover"
+                                triggers="manual">
+                                {{ip2.open()}}
+                            </div>
+                        </div>
+                        <input type="file" id="imgid" name="img" required pattern=".*\.png|.PNG|.jpg|.JPG|jpeg|.JPEG$"
+                            popoverClass="my-custom-class" (change)="upload($event)" ngbPopover="Image is required!"
+                            #ip="ngbPopover" triggers="manual" #image="ngModel" [(ngModel)]="img">
+                    </td>
+                </tr>
+            </table>
+            <button [disabled]="!f.valid" (click)="saveVal()">Submit</button>
+        </form>
+    </div>
+</div>

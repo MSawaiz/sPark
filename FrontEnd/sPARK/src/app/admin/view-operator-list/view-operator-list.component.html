@@ -1,0 +1,281 @@
+<div id="vofg-title">
+    <label>
+        OPERATORS' LIST
+    </label>
+</div>
+<div id="votablediv" style="margin-top: -0.35em;">
+    <table class="table table-dark table-bordered">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>IMAGE</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody id="personimg">
+            <tr *ngFor="let opr of operators.opr">
+                <td> {{opr.firstName}} {{opr.lastName}} </td>
+                <td> <img src={{opr.image}} /></td>
+                <td id="btn">
+                    <button #d value={{opr._id}} (click)="showOpr(d.value, viewopr)"
+                        style="color:green; border-color:green;"><i class="fas fa-info-circle"></i>Details</button>
+                    <button (click)="showAct(d.value, signRec)" style="color:darkviolet; border-color:darkviolet;"><i
+                            class="fas fa-info-circle"></i>Check Activity</button>
+                    <button (click)="edtOpr(d.value, updopr)" style="color:blue; border-color:blue;"><i
+                            class="fa fa-pencil-square-o"></i>Update</button>
+                    <button (click)="delOpr(d.value)" style="color:red; border-color:red;"><i
+                            class="fas fa-user-slash"></i>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<ng-template #viewopr let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                OPERATOR DETAILS
+            </label>
+        </div>
+        <div id="votablediv">
+            <table>
+                <tr>
+                    <th>First Name</th>
+                    <td>{{fname}}</td>
+                    <th>Duty Start Time</th>
+                    <td>{{dst}}</td>
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td>{{lname}}</td>
+                    <th>Duty End Time</th>
+                    <td>{{det}}</td>
+                </tr>
+                <tr>
+                    <th>Username</th>
+                    <td>{{uname}}</td>
+                    <th>Duty Post</th>
+                    <td>{{dp}}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td id="personimg">
+                        <img src={{img}} />
+                    </td>
+                </tr>
+            </table>
+            <button #e value={{opid}} (click)="edtOpr(e.value, updopr)" (click)="modal.close('OK')"
+                style="color:blue; border-color:blue;">Update</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #updopr let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                UPDATE OPERATOR
+            </label>
+        </div>
+        <div id="votablediv">
+            <form #f="ngForm" name="updform" action="">
+                <table class="uptable">
+                    <tr>
+                        <th>First Name</th>
+                        <td>
+                            <div *ngIf="firstName.touched && !firstName.valid">{{fnp.open()}} </div>
+                            <div *ngIf="firstName.valid">{{fnp.close()}}</div>
+                            <input type="text" name="fname" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #fnp="ngbPopover" triggers="manual"
+                                #firstName="ngModel" [(ngModel)]="fname">
+                        </td>
+                        <th style="padding-left: 0px;">Duty Start Time</th>
+                        <td>
+                            <div *ngIf="dstime.touched && !dstime.valid">{{dstp.open()}} </div>
+                            <div *ngIf="dstime.valid">{{dstp.close()}}</div>
+                            <input type="time" name="dst" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #dstp="ngbPopover" triggers="manual"
+                                #dstime="ngModel" [(ngModel)]="dst">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>
+                            <div *ngIf="lastName.touched && !lastName.valid">{{lnp.open()}} </div>
+                            <div *ngIf="lastName.valid">{{lnp.close()}}</div>
+                            <input type="text" name="lname" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #lnp="ngbPopover" triggers="manual"
+                                #lastName="ngModel" [(ngModel)]="lname">
+                        </td>
+                        <th style="padding-left: 0px;">Duty End Time</th>
+                        <td>
+                            <div *ngIf="detime.touched && !detime.valid">{{detp.open()}} </div>
+                            <div *ngIf="detime.valid">{{detp.close()}}</div>
+                            <input type="time" name="det" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #detp="ngbPopover" triggers="manual"
+                                #detime="ngModel" [(ngModel)]="det">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Username</th>
+                        <td>{{uname}}</td>
+                        <th style="padding-left: 0px;">Duty Post</th>
+                        <td>
+                            <div *ngIf="dutypost.touched && !dutypost.valid">{{dpp.open()}} </div>
+                            <div *ngIf="dutypost.valid">{{dpp.close()}}</div>
+                            <select name="dutyPost" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #dpp="ngbPopover" triggers="manual"
+                                #dutypost="ngModel" [(ngModel)]="dp">
+                                <option *ngFor="let p of posts.post.entrancePost">{{p.name}}
+                                <option *ngFor="let p of posts.post.exitPost">{{p.name}}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td>
+                            <div *ngIf="password.touched && !password.valid">
+                                <div *ngIf="password.errors.minlength" popoverClass="my-custom-class"
+                                    ngbPopover="Password must be at least 5 characters long!" #pp2="ngbPopover"
+                                    triggers="manual">
+                                    {{pp2.open()}}
+                                </div>
+                                <div *ngIf="password.errors.pattern" popoverClass="my-custom-class"
+                                    ngbPopover="Password must contain at least one digit and one alphabet!"
+                                    #pp3="ngbPopover" triggers="manual">
+                                    {{pp3.open()}}
+                                </div>
+                            </div>
+                            <input type="password" placeholder="Enter new password" name="pass" minlength="5"
+                                pattern="^(?=.*\d)(?=.*([a-z]|[A-Z]))(?!.*\s).*$" #password="ngModel"
+                                [(ngModel)]="pass">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="padding-bottom: 0px;">Image</th>
+                        <td style="padding-bottom: 0px;" id="personimg"><img src={{img}} /></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <div *ngIf="image.touched && !image.valid">
+                                <div *ngIf="image.errors.pattern" popoverClass="my-custom-class"
+                                    ngbPopover="Only png or jpg or jpeg file types are accepted" #ip2="ngbPopover"
+                                    triggers="manual">
+                                    {{ip2.open()}}
+                                </div>
+                            </div>
+                            <input type="file" id="imgid" name="img" pattern=".*\.png|.PNG|.jpg|.JPG|jpeg|.JPEG$"
+                                popoverClass="my-custom-class" (change)="upload($event)" ngbPopover="Image is required!"
+                                #ip="ngbPopover" triggers="manual" #image="ngModel" [(ngModel)]="img">
+                        </td>
+                    </tr>
+                </table>
+                <button [disabled]="!f.valid" (click)="updOpr()" (click)="modal.close('OK')">Save</button>
+            </form>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #signRec let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div class="oapopup-title">
+            <div id="refresh">
+                    <button (click)="refresh(opid)">
+                    <figure>
+                        <img src="assets/images/refresh.png" alt="Refresh Icon">
+                        <figcaption>Refresh</figcaption>
+                    </figure>
+                </button>
+            </div>
+
+            <div id="filter">
+                <button (click)="open(filtermodal)" (click)="getMap()">
+                    <figure>
+                        <img src="assets/images/filter(orange).png" alt="Filter Icon">
+                        <figcaption>Filter</figcaption>
+                    </figure>
+                </button>
+            </div>
+
+            <label>
+                OPERATOR DETAILS
+            </label>
+        </div>
+        <div id="votablediv">
+            <div class="oa">
+                <table class="table table-bordered table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>DUTY POST</th>
+                            <th>SIGN IN TIME</th>
+                            <th>SIGN OUT TIME</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let login of loggingAct">
+                            <td>{{login.dutyPost}}</td>
+                            <td>{{login.signinTime}}</td>
+                            <td>{{login.signoutTime}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #filtermodal let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                FILTER SEARCH
+            </label>
+        </div>
+        <div id="votablediv">
+            <form name="updform" action="">
+                <table>
+                    <tr>
+                        <th>Sign in Date</th>
+                        <td><input type="date" name="datef" [(ngModel)]="cidatef"></td>
+                        <td style="padding-left: 1em;">to <input disabled type="date" name="datet"
+                                [(ngModel)]="cidatet"></td>
+                    </tr>
+                    <tr>
+                        <th>Sign in Time</th>
+                        <td><input type="time" name="timef" [(ngModel)]="citimef"></td>
+                        <td style="padding-left: 1em;">to <input disabled type="time" name="timet"
+                                [(ngModel)]="citimet"></td>
+                    </tr>
+                    <tr>
+                        <th>Sign out Date</th>
+                        <td><input type="date" name="datef" [(ngModel)]="codatef"></td>
+                        <td style="padding-left: 1em;">to <input disabled type="date" name="datet"
+                                [(ngModel)]="codatet"></td>
+                    </tr>
+                    <tr>
+                        <th>Sign out Time</th>
+                        <td><input type="time" name="timef" [(ngModel)]="cotimef"></td>
+                        <td style="padding-left: 1em;">to <input disabled type="time" name="timet"
+                                [(ngModel)]="cotimet"></td>
+                    </tr>
+                </table>
+                <button style="margin-top: 1%;" (click)="search()" (click)="modal.close('OK')">Search</button>
+            </form>
+        </div>
+    </div>
+</ng-template>

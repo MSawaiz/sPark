@@ -1,0 +1,546 @@
+<div id="fg-text-VF">
+    <div id="fg-title">
+        <label>
+            FEE INFORMATION
+        </label>
+    </div>
+
+    <div id="vftablediv" style="margin-top: -0.35em;">
+        <div class="feeformtable">
+            <div class="hLane">
+                SECTION I
+            </div>
+            <table>
+                <tr>
+                    <th>Peak Hours Rate</th>
+                    <td>{{fee.Rate.peakPrice}}/</td>
+                    <td>{{fee.Rate.perPeakTime}}</td>
+                    <td>(Rs/min)</td>
+                    <th style="padding-left: 7em;">Fine</th>
+                    <td>{{fee.fine}}Rs</td>
+                </tr>
+                <tr>
+                    <th>Normal Hours Rate</th>
+                    <td>{{fee.Rate.normalPrice}}/</td>
+                    <td>{{fee.Rate.perNormalTime}}</td>
+                    <td>(Rs/min)</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="daytable">
+            <div class="hLane">
+                SECTION II
+            </div>
+            <table>
+                <tr>
+                    <th rowspan="2">Select Day</th>
+                    <td>
+                        <input type="radio" name="day" #sun="ngModel" [(ngModel)]="dayname" value="Sunday">
+                    </td>
+                    <td>
+                        <input checked type="radio" name="day" #mon="ngModel" [(ngModel)]="dayname" value="Monday">
+                    </td>
+                    <td>
+                        <input type="radio" name="day" #tues="ngModel" [(ngModel)]="dayname" value="Tuesday">
+                    </td>
+                    <td>
+                        <input type="radio" name="day" #wed="ngModel" [(ngModel)]="dayname" value="Wednesday">
+                    </td>
+                    <td>
+                        <input type="radio" name="day" #thurs="ngModel" [(ngModel)]="dayname" value="Thursday">
+                    </td>
+                    <td>
+                        <input type="radio" name="day" #fri="ngModel" [(ngModel)]="dayname" value="Friday">
+                    </td>
+                    <td>
+                        <input type="radio" name="day" #sat="ngModel" [(ngModel)]="dayname" value="Saturday">
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngIf="sun.value=='Sunday'">
+                        <label for="" style="font-size: large; color:yellow;">Sunday</label>
+                    </td>
+                    <td *ngIf="!(sun.value=='Sunday')">
+                        <label for="">Sunday</label>
+                    </td>
+                    <td *ngIf="mon.value=='Monday'">
+                        <label for="" style="font-size: large; color:yellow;">Monday</label>
+                    </td>
+                    <td *ngIf="!(mon.value=='Monday')">
+                        <label for="">Monday</label>
+                    </td>
+                    <td *ngIf="tues.value=='Tuesday'">
+                        <label for="" style="font-size: large; color:yellow;">Tuesday</label>
+                    </td>
+                    <td *ngIf="!(tues.value=='Tuesday')">
+                        <label for="">Tuesday</label>
+                    </td>
+                    <td *ngIf="wed.value=='Wednesday'">
+                        <label for="" style="font-size: large; color:yellow;">Wednesday</label>
+                    </td>
+                    <td *ngIf="!(wed.value=='Wednesday')">
+                        <label for="">Wednesday</label>
+                    </td>
+                    <td *ngIf="thurs.value=='Thursday'">
+                        <label for="" style="font-size: large; color:yellow;">Thursday</label>
+                    </td>
+                    <td *ngIf="!(thurs.value=='Thursday')">
+                        <label for="">Thursday</label>
+                    </td>
+                    <td *ngIf="fri.value=='Friday'">
+                        <label for="" style="font-size: large; color:yellow;">Friday</label>
+                    </td>
+                    <td *ngIf="!(fri.value=='Friday')">
+                        <label for="">Friday</label>
+                    </td>
+                    <td *ngIf="sat.value=='Saturday'">
+                        <label for="" style="font-size: large; color:yellow;">Saturday</label>
+                    </td>
+                    <td *ngIf="!(sat.value=='Saturday')">
+                        <label for="">Saturday</label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="dayformtable" [ngSwitch]="dayname">
+            <table *ngSwitchCase="'Sunday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[6].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[6].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table *ngSwitchCase="'Monday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[0].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[0].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table *ngSwitchCase="'Tuesday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[1].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[1].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table *ngSwitchCase="'Wednesday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[2].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[2].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table *ngSwitchCase="'Thursday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[3].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[3].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table *ngSwitchCase="'Friday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[4].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[4].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table *ngSwitchCase="'Saturday'">
+                <tr>
+                    <th>Peak Hours Start Time</th>
+                    <td>{{fee.day[5].peakStartTime}}</td>
+                </tr>
+                <tr>
+                    <th>Peak Hours End Time</th>
+                    <td>{{fee.day[5].peakEndTime}}</td>
+                </tr>
+            </table>
+            <table style="color: yellow; font-style: italic;" *ngSwitchDefault>
+                Select day from above
+            </table>
+        </div>
+        <button id="submit" (click)="edtfee(updFee)">Update</button>
+    </div>
+</div>
+
+<ng-template #updFee let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                UPDATE FEE
+            </label>
+        </div>
+
+        <div id="vftablediv">
+            <form #f="ngForm" name="updform" action="">
+                <div class="feeformtable">
+                    <div class="hLane">
+                        SECTION I
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Peak Hours Rate</th>
+                            <td>
+                                <div *ngIf="phrate.touched && !phrate.valid">
+                                    <div *ngIf="phrate.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #phrp1="ngbPopover" triggers="manual">
+                                        {{phrp1.open()}}
+                                    </div>
+                                    <div *ngIf="phrate.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain non-negative numbers!"
+                                        #phrp2="ngbPopover" triggers="manual">
+                                        {{phrp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="PHR" pattern="[0-9]+" required #phrate="ngModel"
+                                    [(ngModel)]="peakPrice"> /
+                            </td>
+                            <td>
+                                <div *ngIf="phrtime.touched && !phrtime.valid">
+                                    <div *ngIf="phrtime.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #phrtp1="ngbPopover" triggers="manual">
+                                        {{phrtp1.open()}}
+                                    </div>
+                                    <div *ngIf="phrtime.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain positive numbers!" #phrtp2="ngbPopover"
+                                        triggers="manual">
+                                        {{phrtp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="PHRT" pattern="[1-9]{1}([0-9]+|[0-9]{0})" required
+                                    #phrtime="ngModel" [(ngModel)]="perPeakTime">
+                            </td>
+                            <td>(Rs/min)</td>
+                            <th style="padding-left: 7em;">Fine</th>
+                            <td>
+                                <div *ngIf="fin.touched && !fin.valid">
+                                    <div *ngIf="fin.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #fp1="ngbPopover" triggers="manual">
+                                        {{fp1.open()}}
+                                    </div>
+                                    <div *ngIf="fin.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain non-negative numbers!" #fp2="ngbPopover"
+                                        triggers="manual">
+                                        {{fp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="fine" pattern="[0-9]+" required #fin="ngModel"
+                                    [(ngModel)]="fine"> Rs
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Normal Hours Rate</th>
+                            <td>
+                                <div *ngIf="nhrate.touched && !nhrate.valid">
+                                    <div *ngIf="nhrate.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #nhrp1="ngbPopover" triggers="manual">
+                                        {{nhrp1.open()}}
+                                    </div>
+                                    <div *ngIf="nhrate.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain non-negative numbers!"
+                                        #nhrp2="ngbPopover" triggers="manual">
+                                        {{nhrp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="NHR" pattern="[0-9]+" required #nhrate="ngModel"
+                                    [(ngModel)]="normalPrice"> /
+                            </td>
+                            <td>
+                                <div *ngIf="nhrtime.touched && !nhrtime.valid">
+                                    <div *ngIf="nhrtime.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #nhrtp1="ngbPopover" triggers="manual">
+                                        {{nhrtp1.open()}}
+                                    </div>
+                                    <div *ngIf="nhrtime.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain positive numbers!" #nhrtp2="ngbPopover"
+                                        triggers="manual">
+                                        {{nhrtp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="NHRT" pattern="[1-9]{1}([0-9]+|[0-9]{0})" required
+                                    #nhrtime="ngModel" [(ngModel)]="perNormalTime">
+                            </td>
+                            <td>(Rs/min)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="daytable">
+                    <div class="hLane">
+                        SECTION II
+                    </div>
+                    <table>
+                        <tr>
+                            <th rowspan="2">Select Day</th>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #sun="ngModel"
+                                    [(ngModel)]="udayname" value="Sunday">
+                            </td>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #mon="ngModel"
+                                    [(ngModel)]="udayname" value="Monday">
+                            </td>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #tues="ngModel"
+                                    [(ngModel)]="udayname" value="Tuesday">
+                            </td>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #wed="ngModel"
+                                    [(ngModel)]="udayname" value="Wednesday">
+                            </td>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #thurs="ngModel"
+                                    [(ngModel)]="udayname" value="Thursday">
+                            </td>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #fri="ngModel"
+                                    [(ngModel)]="udayname" value="Friday">
+                            </td>
+                            <td>
+                                <input [disabled]="!f.valid" type="radio" name="day1" #sat="ngModel"
+                                    [(ngModel)]="udayname" value="Saturday">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td *ngIf="sun.value=='Sunday'">
+                                <label for="" style="font-size: large; color:yellow;">Sunday</label>
+                            </td>
+                            <td *ngIf="!(sun.value=='Sunday')">
+                                <label for="">Sunday</label>
+                            </td>
+                            <td *ngIf="mon.value=='Monday'">
+                                <label for="" style="font-size: large; color:yellow;">Monday</label>
+                            </td>
+                            <td *ngIf="!(mon.value=='Monday')">
+                                <label for="">Monday</label>
+                            </td>
+                            <td *ngIf="tues.value=='Tuesday'">
+                                <label for="" style="font-size: large; color:yellow;">Tuesday</label>
+                            </td>
+                            <td *ngIf="!(tues.value=='Tuesday')">
+                                <label for="">Tuesday</label>
+                            </td>
+                            <td *ngIf="wed.value=='Wednesday'">
+                                <label for="" style="font-size: large; color:yellow;">Wednesday</label>
+                            </td>
+                            <td *ngIf="!(wed.value=='Wednesday')">
+                                <label for="">Wednesday</label>
+                            </td>
+                            <td *ngIf="thurs.value=='Thursday'">
+                                <label for="" style="font-size: large; color:yellow;">Thursday</label>
+                            </td>
+                            <td *ngIf="!(thurs.value=='Thursday')">
+                                <label for="">Thursday</label>
+                            </td>
+                            <td *ngIf="fri.value=='Friday'">
+                                <label for="" style="font-size: large; color:yellow;">Friday</label>
+                            </td>
+                            <td *ngIf="!(fri.value=='Friday')">
+                                <label for="">Friday</label>
+                            </td>
+                            <td *ngIf="sat.value=='Saturday'">
+                                <label for="" style="font-size: large; color:yellow;">Saturday</label>
+                            </td>
+                            <td *ngIf="!(sat.value=='Saturday')">
+                                <label for="">Saturday</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="dayformtable" [ngSwitch]="udayname">
+                    <table *ngSwitchCase="'Monday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime0.valid">{{phstp0.open()}} </div>
+                                <div *ngIf="phstime0.valid">{{phstp0.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp0="ngbPopover" triggers="manual"
+                                    #phstime0="ngModel" [(ngModel)]="day[0].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime0.valid">{{phetp0.open()}} </div>
+                                <div *ngIf="phetime0.valid">{{phetp0.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp0="ngbPopover" triggers="manual"
+                                    #phetime0="ngModel" [(ngModel)]="day[0].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchCase="'Tuesday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime1.valid">{{phstp1.open()}} </div>
+                                <div *ngIf="phstime1.valid">{{phstp1.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp1="ngbPopover" triggers="manual"
+                                    #phstime1="ngModel" [(ngModel)]="day[1].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime1.valid">{{phetp1.open()}} </div>
+                                <div *ngIf="phetime1.valid">{{phetp1.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp1="ngbPopover" triggers="manual"
+                                    #phetime1="ngModel" [(ngModel)]="day[1].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchCase="'Wednesday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime2.valid">{{phstp2.open()}} </div>
+                                <div *ngIf="phstime2.valid">{{phstp2.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp2="ngbPopover" triggers="manual"
+                                    #phstime2="ngModel" [(ngModel)]="day[2].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime2.valid">{{phetp2.open()}} </div>
+                                <div *ngIf="phetime2.valid">{{phetp2.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp2="ngbPopover" triggers="manual"
+                                    #phetime2="ngModel" [(ngModel)]="day[2].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchCase="'Thursday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime3.valid">{{phstp3.open()}} </div>
+                                <div *ngIf="phstime3.valid">{{phstp3.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp3="ngbPopover" triggers="manual"
+                                    #phstime3="ngModel" [(ngModel)]="day[3].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime3.valid">{{phetp3.open()}} </div>
+                                <div *ngIf="phetime3.valid">{{phetp3.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp3="ngbPopover" triggers="manual"
+                                    #phetime3="ngModel" [(ngModel)]="day[3].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchCase="'Friday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime4.valid">{{phstp4.open()}} </div>
+                                <div *ngIf="phstime4.valid">{{phstp4.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp4="ngbPopover" triggers="manual"
+                                    #phstime4="ngModel" [(ngModel)]="day[4].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime4.valid">{{phetp4.open()}} </div>
+                                <div *ngIf="phetime4.valid">{{phetp4.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp4="ngbPopover" triggers="manual"
+                                    #phetime4="ngModel" [(ngModel)]="day[4].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchCase="'Saturday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime5.valid">{{phstp5.open()}} </div>
+                                <div *ngIf="phstime5.valid">{{phstp5.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp5="ngbPopover" triggers="manual"
+                                    #phstime5="ngModel" [(ngModel)]="day[5].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime5.valid">{{phetp5.open()}} </div>
+                                <div *ngIf="phetime5.valid">{{phetp5.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp5="ngbPopover" triggers="manual"
+                                    #phetime5="ngModel" [(ngModel)]="day[5].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchCase="'Sunday'">
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td>
+                                <div *ngIf="!phstime6.valid">{{phstp6.open()}} </div>
+                                <div *ngIf="phstime6.valid">{{phstp6.close()}}</div>
+                                <input type="time" name="PHST" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phstp6="ngbPopover" triggers="manual"
+                                    #phstime6="ngModel" [(ngModel)]="day[6].peakStartTime">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td>
+                                <div *ngIf="!phetime6.valid">{{phetp6.open()}} </div>
+                                <div *ngIf="phetime6.valid">{{phetp6.close()}}</div>
+                                <input type="time" name="PHET" required popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #phetp6="ngbPopover" triggers="manual"
+                                    #phetime6="ngModel" [(ngModel)]="day[6].peakEndTime">
+                            </td>
+                        </tr>
+                    </table>
+                    <table *ngSwitchDefault>
+                        <label style="color: yellow; font-style: italic" for=""> Select Day From Above</label>
+                        <tr>
+                            <th>Peak Hours Start Time</th>
+                            <td><input type="time"></td>
+                        </tr>
+                        <tr>
+                            <th>Peak Hours End Time</th>
+                            <td><input type="time"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="upd">
+                    <button [disabled]="!f.valid" (click)="updfee()" (click)="modal.close('OK')">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

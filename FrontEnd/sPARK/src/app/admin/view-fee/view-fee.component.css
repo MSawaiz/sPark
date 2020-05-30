@@ -1,0 +1,267 @@
+#fg-text-VF #fg-title {
+    display: inline-block;
+    font-size: 2.5em;
+    color: whitesmoke;
+    padding-left: 0.4em;
+    padding-top: 0.4em;
+    height: 2.4em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-right-radius: 10px;
+}
+
+#fg-text-VF label {
+    margin-top: 0.35em;
+    float: right;
+    padding-right: 1em;
+}
+
+#fg-text-VF #vftablediv {
+    overflow-y: auto;
+    height: 39.7rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 1px white solid;
+    border-bottom-right-radius: 10px;
+}
+
+#fg-text-VF #vftablediv table {
+    color: white;
+}
+
+#fg-text-VF #vftablediv .feeformtable {
+    margin-top: 1em;
+    border-bottom: 1px white solid;
+    padding-bottom: 1em;
+    height: 15rem;
+}
+
+#fg-text-VF #vftablediv #dayformtable {
+    margin-left: 10em;
+}
+
+#fg-text-VF #vftablediv #daytable {
+    margin-top: 1em;
+}
+
+#fg-text-VF #vftablediv #daytable table {
+    margin-left: 8em;
+    margin-top: 2em;
+}
+
+#fg-text-VF #vftablediv .feeformtable table {
+    margin-left: 13em;
+    margin-top: 3em;
+}
+
+#fg-text-VF #vftablediv .feeformtable table tr th {
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 40px;
+}
+
+#fg-text-VF #vftablediv #daytable table tr th {
+    text-align: right;
+    padding-right: 40px;
+}
+
+#fg-text-VF #vftablediv #daytable table tr td {
+    text-align: center;
+    padding-right: 40px;
+}
+
+#fg-text-VF #vftablediv #dayformtable table tr th {
+    padding-top: 20px;
+    padding-right: 15px;
+}
+
+#fg-text-VF #vftablediv table tr td {
+    padding-top: 20px;
+}
+
+#fg-text-VF #vftablediv #dayformtable a {
+    text-decoration: none;
+}
+
+#fg-text-VF #vftablediv #submit {
+    width: 10em;
+    margin-top: 0em;
+    margin-right: 17.6em;
+    float: right;
+    padding: 0.3em 0em 0.3em 0em;
+    background-color: rgb(0, 0, 0);
+    color:blue;
+    border:2px blue solid;
+    font-weight: bold;
+    text-underline-position: unset;
+}
+
+#fg-text-VF #vftablediv .hLane {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal-frame .modal-content {
+    border: 3px solid white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 20% -15%;
+    width: 52em;
+}
+
+.modal-frame span {
+    color: rgb(182, 182, 182);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-frame span:hover, span:focus {
+    color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-frame #popup-title {
+    display: inline-block;
+    font-size: 2em;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.modal-frame #popup-title label {
+    margin-top: 0em;
+    float: right;
+    padding-right: 1em;
+}
+
+.modal-frame #vftablediv {
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 1px white solid;
+    border-bottom-right-radius: 10px;
+    height: 29em;
+}
+
+.modal-frame #vftablediv table {
+    color: white;
+}
+
+.modal-frame #vftablediv .feeformtable {
+    margin-top: 1em;
+    border-bottom: 1px white solid;
+    padding-bottom: 1em;
+}
+
+.modal-frame #vftablediv .feeformtable table {
+    margin-left: 4em;
+}
+
+.modal-frame #vftablediv .feeformtable table tr th {
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.modal-frame #vftablediv #dayformtable {
+    margin-top: 0em;
+    margin-left: 0em;
+}
+
+.modal-frame #vftablediv #dayformtable table {
+    margin-left: 4em;
+}
+
+.modal-frame #vftablediv #daytable {
+    margin-top: 1em;
+}
+
+.modal-frame #vftablediv #daytable table {
+    margin-left: 1em;
+}
+
+.modal-frame #vftablediv #daytable table tr th {
+    text-align: right;
+    padding-right: 40px;
+}
+
+.modal-frame #vftablediv #daytable table tr td {
+    text-align: center;
+    padding-right: 40px;
+}
+
+.modal-frame #vftablediv #dayformtable table tr th {
+    padding-top: 20px;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.modal-frame  #vftablediv table tr td {
+    padding-top: 20px;
+}
+
+.modal-frame  #vftablediv table input[type=time] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-frame  #vftablediv table input[type=number] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 5em;
+}
+
+.modal-frame #vftablediv table input[type=text] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 5em;
+}
+
+
+.modal-frame #vftablediv #upd button{
+    width: 10em;
+    margin-right: 8em;
+    float: right;
+    padding: 0.3em 0em 0.3em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame #vftablediv #upd button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+    opacity: 0.35;
+}
+
+.modal-frame #vftablediv .hLane {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal-frame #vftablediv table input.ng-touched.ng-invalid{
+    border: 2px solid red
+}
+
+.modal-frame #vftablediv table select.ng-touched.ng-invalid{
+    border: 2px solid red
+}
+
+.modal-frame #vftablediv table .my-custom-class {
+    background: aliceblue;
+    font-size: 55%;
+    font-weight: bold;
+    margin-bottom: -0.2em;
+    border: 2px black solid;
+}
+
+.modal-frame #vftablediv table .my-custom-class .arrow::after {
+    border-top-color: aliceblue;
+}

@@ -1,0 +1,287 @@
+#vofg-title {
+    display: inline-block;
+    font-size: 2.5em;
+    color: whitesmoke;
+    padding-left: 0.4em;
+    padding-top: 0.4em;
+    height: 2.4em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-right-radius: 10px;
+}
+
+#vofg-title label {
+    margin-top: 0.35em;
+    float: right;
+    padding-right: 1em;
+}
+
+#votablediv {
+    margin-top: 0;
+    overflow-y: auto;
+    height: 39.7rem;
+}
+
+#votablediv thead {
+    color: #4CAF50;
+    background-color: black;
+}
+
+#votablediv tbody {
+    background-color: rgb(15, 15, 15);
+    color: whitesmoke;
+}
+
+#votablediv #personimg img {
+    width: 5em;
+    height: auto;
+    filter: blur(0px);
+    vertical-align: middle;
+    margin-left: 15%;
+}
+
+#votablediv #btn button {
+    background: black;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-top: 0.1em;
+    padding-bottom: 0.2em;
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+#votablediv i {
+    padding-right: 0.5em;
+}
+
+.modal-frame .modal-content {
+    border: 3px solid whitesmoke;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 15% 15%;
+}
+
+span {
+    color: rgb(182, 182, 182);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+span:hover, span:focus {
+    color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-frame #popup-title {
+    display: inline-block;
+    font-size: 2em;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.modal-frame #popup-title label {
+    margin-top: 0em;
+    float: right;
+    padding-right: 1em;
+}
+
+.modal-frame #votablediv {
+    border-top: 1px white solid;
+    margin-bottom: 1em;
+    height: 84.7%;
+}
+
+.modal-frame #votablediv table {
+    color: white;
+    margin-top: 1em;
+    margin-left: 7em;
+}
+
+.modal-frame #votablediv .uptable {
+    color: white;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+.modal-frame #votablediv table tr th {
+    padding: 10px 25px 20px 40px;
+}
+
+.modal-frame #votablediv table tr td {
+    padding: 10px 0px 20px 0px;
+}
+
+.modal-frame #votablediv #personimg img {
+    width: 5em;
+    filter: blur(0px);
+}
+
+.modal-frame #votablediv button {
+    width: 10em;
+    margin-top: -1em;
+    margin-right: 15em;
+    float: right;
+    padding: 0.3em 0em 0.3em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame #votablediv button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+    opacity: 0.35;
+}
+
+.modal-frame #votablediv table input[type=text] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 10em;
+}
+
+.modal-frame #votablediv table input[type=password] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 10em;
+}
+
+.modal-frame #votablediv table input[type=time] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0em;
+}
+
+.modal-frame #votablediv table input[type=date] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0em;
+}
+
+.modal-frame #votablediv table select {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-frame #votablediv table input.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+.modal-frame #votablediv table select.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+.modal-frame #votablediv table .my-custom-class {
+    background: aliceblue;
+    font-size: 55%;
+    font-weight: bold;
+    margin-bottom: -0.2em;
+    border: 2px black solid;
+}
+
+.modal-frame #votablediv table .my-custom-class .arrow::after {
+    border-top-color: aliceblue;
+}
+
+.modal-frame #votablediv .oa {
+    height: 25.5em;
+}
+
+.modal-frame #votablediv .oa table {
+    overflow-y: hidden;
+    color: white;
+    margin-top: 0em;
+    margin-left: 0em;
+    background-color: black;
+    text-align: center;
+}
+
+.modal-frame #votablediv .oa thead {
+    color: #4CAF50;
+}
+
+.modal-frame #votablediv .oa tbody {
+    color: whitesmoke;
+}
+
+.modal-frame .oapopup-title {
+    display: inline-block;
+    font-size: 2em;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.modal-frame .oapopup-title label {
+    margin-top: 0em;
+    float: right;
+    padding-right: 1em;
+}
+
+.modal-frame .oapopup-title #refresh {
+    float: left;
+    margin-top: -0.6em;
+    margin-left: 0.5em;
+    width: 2em;
+    height: 2em;
+    border: 1px white solid;
+    border-radius: 25em;
+}
+
+.modal-frame .oapopup-title #refresh button {
+    background-color: Transparent;
+    border: none;
+    font-size: 0.4em;
+    color: white;
+}
+
+.modal-frame .oapopup-title #refresh button img {
+    margin-top: -0.5em;
+    filter: blur(0px);
+    width: 4em;
+    height: 4em;
+}
+
+.modal-frame .oapopup-title #refresh button figcaption {
+    margin-top: 0.2em;
+}
+
+.modal-frame .oapopup-title #filter {
+    float: left;
+    margin-top: -0.6em;
+    margin-left: 0.5em;
+    width: 2em;
+    height: 2em;
+    border: 1px white solid;
+    border-radius: 25em;
+    text-align: center;
+}
+
+.modal-frame .oapopup-title #filter button {
+    background-color: Transparent;
+    border: none;
+    font-size: 0.4em;
+    color: white;
+    margin-left: -0.5em;
+}
+
+.modal-frame .oapopup-title #filter button img {
+    margin-top: -0.5em;
+    filter: blur(0px);
+    width: 5em;
+    height: 5em;
+}
+
+.modal-frame .oapopup-title #filter button figcaption {
+    margin-top: -0.2em;
+}

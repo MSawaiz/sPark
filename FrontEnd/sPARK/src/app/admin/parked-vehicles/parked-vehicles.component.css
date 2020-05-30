@@ -1,0 +1,204 @@
+#fg-title {
+    display: inline-block;
+    font-size: 2.5em;
+    color: whitesmoke;
+    padding-left: 0.4em;
+    padding-top: 0.4em;
+    height: 2.4em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-right-radius: 10px;
+}
+
+#fg-title .titleLabel label {
+    margin-top: 0.35em;
+    float: right;
+    padding-right: 1em;
+}
+
+#fg-title .titleButtons{
+    display: inline;
+    float: left;
+}
+
+#fg-title .titleButtons #refresh {
+    margin-top: -0.1em;
+    margin-left: 0.1em;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px white solid;
+    border-radius: 25em;
+}
+
+#fg-title .titleButtons #refresh button {
+    background-color: Transparent;
+    border: none;
+    font-size: 0.35em;
+    color: white;
+}
+
+#fg-title .titleButtons #refresh button img {
+    margin-top: -2em;
+    filter: blur(0px);
+    width: 3.2em;
+    height: 3.2em;
+}
+
+#fg-title .titleButtons #refresh button figcaption {
+    margin-top: 0.6em;
+}
+
+#fg-title .titleButtons #filter {
+    margin-top: -1.5em;
+    margin-left: 2.3em;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px white solid;
+    border-radius: 25em;
+}
+
+#fg-title .titleButtons #filter button {
+    background-color: Transparent;
+    border: none;
+    font-size: 0.35em;
+    color: white;
+    margin-left: -0.45em;
+}
+
+#fg-title .titleButtons #filter button img {
+    margin-top: -2em;
+    filter: blur(0px);
+    width: 4.2em;
+    height: 4.2em;
+}
+
+#fg-title .titleButtons #filter button figcaption {
+    margin-top: 0.1em;
+}
+
+.pvtablediv {
+    margin-top: -0.4em;
+    overflow-y: auto;
+    height: 84.7%;
+}
+
+.pvtablediv table thead {
+    color: #4CAF50;
+    background-color: black;
+}
+
+.pvtablediv table tbody {
+    background-color: rgb(15, 15, 15);
+    color: whitesmoke;
+}
+
+.modal-frame .modal-content {
+    border: 3px solid whitesmoke;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 15% 15%;
+}
+
+.modal-frame span {
+    color: rgb(182, 182, 182);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-frame  span:hover, span:focus {
+    color: whitesmoke;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-frame #mpvpopup-title {
+    display: inline-block;
+    font-size: 2em;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.modal-frame #mpvpopup-title label {
+    margin-top: 0em;
+    float: right;
+    padding-right: 1em;
+}
+
+.modal-frame #mpvtablediv {
+    overflow-y: auto;
+    height: 25em;
+    border-top: 1px white solid;
+    margin-bottom: 1em;
+}
+
+.modal-frame #mpvtablediv table {
+    color: white;
+    margin-top: 1em;
+    margin-left: 7em;
+}
+
+.modal-frame #mpvtablediv .uptable {
+    color: white;
+    margin-top: 1em;
+    margin-left: 2em;
+}
+
+.modal-frame #mpvtablediv table tr th {
+    padding: 10px 25px 20px 40px;
+}
+
+.modal-frame #mpvtablediv table tr td {
+    padding: 10px 0px 20px 0px;
+}
+
+.modal-frame #mpvtablediv #personimg img {
+    width: 5em;
+    filter: blur(0px);
+}
+
+.modal-frame #mpvtablediv button {
+    width: 10em;
+    margin-right: 15em;
+    float: right;
+    padding: 0.3em 0em 0.3em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame #mpvtablediv table input[type=text] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 8em;
+}
+
+.modal-frame #mpvtablediv table input[type=password] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 10em;
+}
+
+.modal-frame #mpvtablediv table input[type=date] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0em;
+}
+
+.modal-frame #mpvtablediv table input[type=time] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    margin-left: 0em;
+}
+
+.modal-frame #mpvtablediv table select {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+}

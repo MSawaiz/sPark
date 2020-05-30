@@ -1,0 +1,42 @@
+<div id="backgroundImg">
+    <img src="assets/images/background.jpg" alt="">
+    <div id="mainDiv">
+        <h1 class="mtitle">
+            <img src="assets/images/logo.png" />
+            <div id="h">
+                sPARK
+            </div>
+        </h1>
+
+        <div id="fg-text">
+            <router-outlet></router-outlet>
+        </div>
+
+        <div class="sidenav">
+            <a routerLink="map">MAP</a>
+            <div class="dropdown-btn">
+                PARKING LOT
+                <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-container">
+                <a routerLink="parkveh">PARKED VEHICLES</a>
+                <a routerLink="viewfee">PARKING FEE</a>
+            </div>
+            <div class="dropdown-btn">
+                OPERATOR
+                <i class="fa fa-caret-down"></i>
+            </div>
+            <div class="dropdown-container">
+                <a routerLink="addopr">ADD</a>
+                <a routerLink="voptrlist">MANAGE</a>
+            </div>
+            <a routerLink="veharch">VEHICLES' ARCHIVE</a>
+        </div>
+        <div id="password">
+            <a (click)="sendId()" routerLink="changepassword" >CHANGE PASSWORD</a>
+        </div>
+        <div id="signout">
+            <a (click)="logout()">SIGN OUT</a>
+        </div>
+    </div>
+</div>

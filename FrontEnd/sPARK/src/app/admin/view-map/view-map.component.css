@@ -1,0 +1,322 @@
+.vmfg-title {
+    display: inline-block;
+    font-size: 2.5em;
+    color: whitesmoke;
+    padding-left: 0.4em;
+    padding-top: 0.4em;
+    height: 2.4em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-top-right-radius: 10px;
+}
+
+.vmfg-title label {
+    margin-top: 0.35em;
+    float: right;
+    padding-right: 1em;
+}
+
+.vmtablediv #back {
+    width: 5em;
+    height: 5em;
+    display: inline-block;
+}
+
+.vmtablediv #back button {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    background: transparent;
+    border: none;
+    border-right: 1px white solid;
+    border-bottom: 1px white solid;
+    border-bottom-right-radius: 1em;
+}
+
+.vmtablediv #back button img {
+    width: 2.9em;
+    height: auto;
+    filter: blur(0px);
+}
+
+.vmtablediv #forward {
+    float: right;
+    width: 5em;
+    height: 5em;
+}
+
+.vmtablediv #forward button {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    background: transparent;
+    border: none;
+    border-left: 1px white solid;
+    border-bottom: 1px white solid;
+    border-bottom-left-radius: 1em;
+}
+
+.vmtablediv #forward button img {
+    width: 2.9em;
+    height: auto;
+    filter: blur(0px);
+}
+
+.vmtablediv {
+    overflow-y: auto;
+    height: 39.7rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 1px white solid;
+    border-bottom-right-radius: 10px;
+}
+
+.vmtablediv #hLane {
+    color: white;
+    margin-top: -3em;
+    margin-left: 5em;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.vmtablediv #floorfield table {
+    color: white;
+    margin-top: 7%;
+    margin-left: 30%;
+    font-size: 1.5em;
+}
+
+.vmtablediv #floorFieldButtons {
+    display: inline;
+    margin-left: 60%;
+}
+
+.vmtablediv #floorFieldButtons button {
+    width: 10em;
+    margin-top: 1em;
+    padding: 0.3em 0em 0.3em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.vmtablediv td {
+    padding: 10px;
+}
+
+.vmtablediv #laneList {
+    overflow-y: auto;
+    height: 19em;
+    color: white;
+    margin-top: 7%;
+    margin-left: 22.9em;
+    margin-right: 22.4em;
+}
+
+.vmtablediv thead {
+    background-color: black;
+    color: rgb(76, 175, 80);
+}
+
+.vmtablediv tbody {
+    background-color: rgb(0, 0, 0);
+}
+
+.vmtablediv #laneListButton {
+    margin-left: 66%;
+}
+
+.vmtablediv #laneListButton button {
+    margin-top: 1em;
+    width: 10em;
+    padding: 0.5em 0em 0.5em 0em;
+    background-color: rgb(0, 0, 0);
+    color: blue;
+    border: 2px blue solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame .modal-content {
+    border: 3px solid whitesmoke;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 15% 15%;
+}
+
+.modal-frame span {
+    color: rgb(182, 182, 182);
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.modal-frame .mvmtablediv .laneList span {
+    color: red;
+    font-size: 28px;
+}
+
+.modal-frame #vmpopup-title {
+    display: inline-block;
+    font-size: 2em;
+    color: whitesmoke;
+    width: 100%;
+}
+
+.modal-frame #vmpopup-title label {
+    margin-top: 0em;
+    float: right;
+    padding-right: 1em;
+}
+
+.modal-frame .mvmtablediv {
+    border-top: 1px white solid;
+    margin-bottom: 1em;
+    height: 10%;
+}
+
+.modal-frame .mvmtablediv .floorfield table {
+    color: white;
+    font-size: 1.2em;
+    margin-left: 9.5em;
+}
+
+.modal-frame .mvmtablediv .floorfield table input[type=text] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 7.5em;
+}
+
+.modal-frame .mvmtablediv #tablefield table {
+    color: white;
+    margin-top: 1em;
+    margin-left: 16em;
+}
+
+.modal-frame .mvmtablediv td {
+    padding: 10px;
+}
+
+.modal-frame .mvmtablediv .tableFieldButton button {
+    width: 10em;
+    margin-left: 39em;
+    padding: 0.5em 0em 0.5em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame .mvmtablediv .hLane {
+    color: white;
+    margin-top: -3em;
+    margin-left: 0.9em;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.modal-frame .mvmtablediv .laneList {
+    overflow-y: auto;
+    height: 13em;
+    color: white;
+    margin-top: 0.5em;
+    margin-left: 14em;
+    margin-right: 13.5em;
+}
+
+.modal-frame .mvmtablediv .laneList table {
+    width: 21em;
+    background-color: black;
+}
+
+.modal-frame .mvmtablediv .laneList table td {
+    padding: 2% 2% 2% 3%;
+}
+
+.modal-frame .mvmtablediv .laneList table input[type=text] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+    width: 7em;
+}
+
+.modal-frame .mvmtablediv .laneListButton button {
+    width: 10em;
+    margin-top: 0.5em;
+    margin-left: 39em;
+    padding: 0.5em 0em 0.5em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame .mvmtablediv .laneListButton button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+    opacity: 0.35;
+}
+
+.modal-frame .mvmtablediv .floorfieldButton button {
+    width: 10em;
+    margin-left: 40em;
+    margin-top: 1em;
+    padding: 0.5em 0em 0.5em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame .mvmtablediv table input.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+.modal-frame .mvmtablediv table select.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+.modal-frame .mvmtablediv table .my-custom-class {
+    background: aliceblue;
+    font-size: 55%;
+    font-weight: bold;
+    margin-bottom: -0.2em;
+    border: 2px black solid;
+}
+
+.modal-frame .mvmtablediv #back {
+    width: 5em;
+    height: 5em;
+    display: inline-block;
+}
+
+.modal-frame .mvmtablediv #back button {
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    background: transparent;
+    border: none;
+    border-right: 1px white solid;
+    border-bottom: 1px white solid;
+    border-bottom-right-radius: 1em;
+}
+
+.modal-frame .mvmtablediv #back button img {
+    width: 2.9em;
+    height: auto;
+    filter: blur(0px);
+}
+
+.modal-frame .mvmtablediv table .my-custom-class .arrow::after {
+    border-top-color: aliceblue;
+}

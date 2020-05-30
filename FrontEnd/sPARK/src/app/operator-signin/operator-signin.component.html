@@ -1,0 +1,65 @@
+<div id="backgroundImg">
+    <img src="assets/images/background.jpg" alt="">
+    <h1 id="title">
+        <img src="assets/images/logo.png" />
+        <div id="h">
+            sPARK
+        </div>
+    </h1>
+    <div id="exit">
+        <a (click)="close()">
+            <img src="assets/images/exit-button.png" alt="">
+            <p>EXIT </p>
+        </a>
+    </div>
+
+    <div id="fg-text">
+        <div id="back">
+            <a routerLink="">
+                <img src="assets/images/back2(green).png" alt="Back" />
+            </a>
+        </div>
+        <h1 id="sub-title">
+            OPERATOR SIGN IN
+        </h1>
+        <div id="gridContainer-OS">
+            <form #f="ngForm" name="oprSignForm">
+                <table id="signin" class="table">
+                    <tr>
+                        <td><label>Username:</label></td>
+                        <td>
+                            <div *ngIf="uname.touched && !uname.valid">
+                                {{unp.open()}}
+                            </div>
+                            <div *ngIf="uname.valid">
+                                {{unp.close()}}
+                            </div>
+                            <input type="text" name="username" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #unp="ngbPopover" triggers="manual"
+                                #uname="ngModel" [(ngModel)]="username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Password:</label></td>
+                        <td>
+                            <div *ngIf="pass.touched && !pass.valid">
+                                {{pp1.open()}}
+                            </div>
+                            <div *ngIf="pass.valid">
+                                {{pp1.close()}}
+                            </div>
+                            <input type="password" name="password" required popoverClass="my-custom-class"
+                                ngbPopover="This field is required!" #pp1="ngbPopover" triggers="manual" #pass="ngModel"
+                                [(ngModel)]="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <button [disabled]="!f.valid" (click)="checkUser()">Sign In</button>
+            </form>
+        </div>
+    </div>
+</div>

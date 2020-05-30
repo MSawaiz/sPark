@@ -1,0 +1,138 @@
+#backgroundImg img {
+    width: 100%;
+    height: 48rem;
+    filter: blur(5px);
+}
+
+#mainDiv {
+    border: 3px solid #f1f1f1;
+    border-radius: 10px;
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    width: 98%;
+    height: 96%;
+}
+
+#mainDiv #fg-text {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-left: 3px solid #f1f1f1;
+    height: 95%;
+    position: fixed;
+    left: 17.9em;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 77.7%;
+}
+
+#mainDiv .mtitle {
+    position: absolute;
+    margin-left: 0.2em;
+    margin-top: 0.2em;
+    font-size: 3.3em;
+    color: whitesmoke;
+}
+
+#mainDiv .mtitle #h {
+    display: inline;
+    padding-left: 20px;
+}
+
+#mainDiv .mtitle img {
+    float: left;
+    overflow: hidden;
+    width: 70px;
+    height: auto;
+    filter: blur(0px);
+}
+
+#mainDiv .sidenav {
+    height: 70%;
+    width: 269px;
+    position: absolute;
+    top: 6em;
+    background-color: rgb(97, 140, 159);
+    opacity: 0.7;
+    font-weight: bold;
+}
+
+#mainDiv .sidenav a, .dropdown-btn {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 21.5px;
+    color: black;
+    display: block;
+    cursor: pointer;
+}
+
+#mainDiv .sidenav a:hover, .dropdown-btn:hover {
+    text-decoration: none;
+    background-color: rgb(75, 120, 133);
+    color: black;
+}
+
+#mainDiv .dropdown-container {
+    display: none;
+}
+
+#mainDiv .dropdown-container a {
+    padding-left: 45px;
+    font-size: 18px;
+}
+
+#mainDiv .fa-caret-down {
+    float: right;
+    padding-top: 5px;
+    padding-right: 8px;
+}
+
+#mainDiv #signout {
+    font-size: 25px;
+    position: absolute;
+    top: 90%;
+    opacity: 0.7;
+    text-align: center;
+}
+
+#mainDiv #signout a {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: rgb(23, 69, 82);
+    height: 2.95em;
+    width: 270px;
+    border-bottom-left-radius: 10px;
+    color: rgb(218, 218, 27);
+    display: block;
+    cursor: pointer;
+}
+
+#mainDiv #signout a:hover {
+    background-color: rgb(37, 100, 117);
+}
+
+#mainDiv #password {
+    font-size: 20px;
+    position: absolute;
+    top: 82.8%;
+    opacity: 0.7;
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+}
+
+#mainDiv #password a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    background-color: rgb(23, 69, 82);
+    width: 270px;
+    color: white;
+    display: block;
+    cursor: pointer;
+}
+
+#mainDiv #password a:hover {
+    background-color: rgb(37, 100, 117);
+}

@@ -1,0 +1,409 @@
+.backgroundImg img {
+    height: 48rem;
+    width: 100%;
+    filter: blur(5px);
+}
+
+.backgroundImg .comainDiv {
+    border: 3px solid #f1f1f1;
+    border-radius: 10px;
+    position: absolute;
+    top: 0.8em;
+    left: 0.8em;
+    width: 98%;
+    height: 96%;
+}
+
+.backgroundImg .comainDiv .cofg-text {
+    border-bottom: 3px solid #f1f1f1;
+    height: 9.988%;
+    position: fixed;
+    width: 97.55%;
+}
+
+.backgroundImg .comainDiv .cofg-text .cofg-title {
+    display: inline-block;
+    font-size: 2.5em;
+    color: whitesmoke;
+    padding-left: 14em;
+    height: 1.9em;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.backgroundImg .comainDiv .cofg-title .colabel label {
+    margin-top: 0.2em;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.backgroundImg .comainDiv .cofg-title a {
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(218, 218, 27);
+    font-size: 0.5em;
+    padding-top: 1em;
+    padding-right: 1em;
+}
+
+.backgroundImg .comainDiv #title {
+    position: absolute;
+    margin-left: 0.2em;
+    margin-top: 0.2em;
+    font-size: 3.3em;
+    color: whitesmoke;
+}
+
+.backgroundImg .comainDiv #title #h {
+    display: inline;
+    padding-left: 20px;
+}
+
+.backgroundImg .comainDiv #title img {
+    float: left;
+    overflow: hidden;
+    width: 70px;
+    height: auto;
+    filter: blur(0px);
+}
+
+.backgroundImg .comainDiv .signoutco {
+    font-size: 40px;
+    height: 100%;
+    width: 150px;
+    position: absolute;
+    top: 0rem;
+    left: 73.8rem;
+    background-color: rgb(23, 69, 82);
+    border-top-right-radius: 10px;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.backgroundImg .comainDiv .signoutco a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(218, 218, 27);
+    display: block;
+    cursor: pointer;
+}
+
+.backgroundImg .comainDiv .signoutco a:hover {
+    background-color: rgb(75, 120, 133);
+    border-top-right-radius: 10px;
+    padding-top: 20px;
+    height: 3.7em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.backgroundImg .comainDiv #changepassword {
+    font-size: 40px;
+    height: 100%;
+    width: 250px;
+    position: absolute;
+    top: 0rem;
+    left: 58.2rem;
+    background-color: rgb(41, 80, 97);
+    opacity: 0.7;
+    text-align: center;
+}
+
+.backgroundImg .comainDiv #changepassword a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    display: block;
+    cursor: pointer;
+}
+
+.backgroundImg .comainDiv #changepassword a:hover {
+    background-color: rgb(75, 120, 133);
+    padding-top: 20px;
+    height: 3.7em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.backgroundImg .comainDiv .webcam-wrapper {
+    border: 2px solid #f1f1f1;
+    background: black;
+    position: absolute;
+    top: 6em;
+    left: 0.6em;
+    width: 65%;
+    height: 85%;
+}
+
+.backgroundImg .comainDiv video {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.backgroundImg .comainDiv #payment {
+    border: 2px solid #f1f1f1;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 6em;
+    left: 0.6em;
+    width: 65%;
+    height: 83%;
+}
+
+.backgroundImg .comainDiv .cotoken {
+    border: 2px solid #f1f1f1;
+    background-color: rgba(97, 140, 159, 0.6);
+    position: absolute;
+    top: 6em;
+    left: 55.3em;
+    width: 33%;
+    height: 70%;
+    padding: 2em;
+    padding-top: 1em;
+    color: black;
+}
+
+.backgroundImg .comainDiv .cotoken h1 {
+    font-weight: bold;
+    text-align: center;
+}
+
+.backgroundImg .comainDiv .cotoken table {
+    margin-top: 4em;
+    margin-left: 1.2em;
+    text-align: center;
+    font-size: 1.6em;
+}
+
+.backgroundImg .comainDiv .cotoken table tr td div {
+    height: 8em;
+    overflow: auto;
+}
+
+.backgroundImg .comainDiv .cotoken table tr td div table {
+    width: 100%;
+    margin: 0;
+}
+
+.backgroundImg .comainDiv #pcheckout-btn button {
+    position: absolute;
+    top: 86%;
+    left: 75%;
+    height: 4.5em;
+    width: 14em;
+    background-color: rgb(13, 4, 92);
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.backgroundImg .comainDiv #pcheckout-btn button:hover {
+    background-color: rgb(17, 3, 119);
+}
+
+.backgroundImg .comainDiv #pcheckout-btn button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+}
+
+.modal-frame .modal-content {
+    border: 3px solid whitesmoke;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin: 11% 3%;
+    height: 30em;
+}
+
+.modal-frame .modal-content span {
+    color: rgb(182, 182, 182);
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.modal-frame .compopup-title {
+    display: inline-block;
+    font-size: 2em;
+    color: whitesmoke;
+    width: 100%;
+    border-bottom: 1px solid white;
+}
+
+.modal-frame .compopup-title label {
+    margin-top: 0em;
+    float: right;
+    padding-right: 1em;
+}
+
+.modal-frame #outerdiv #leftdiv {
+    position: absolute;
+    margin-bottom: 1em;
+    width: 50%;
+    height: 18em;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+}
+
+.modal-frame #outerdiv #leftdiv table {
+    margin-top: 2.5em;
+    font-size: large;
+    position: absolute;
+    left: 4.5em;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.modal-frame #outerdiv #leftdiv table tr th {
+    padding-bottom: 0.7em;
+}
+
+.modal-frame #outerdiv #leftdiv table tr td {
+    padding-bottom: 0.7em;
+}
+
+.modal-frame #outerdiv #leftdiv table input[type=text] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-frame #outerdiv #leftdiv table button {
+    background-color: rgb(13, 4, 92);
+    color: whitesmoke;
+    border-radius: 10px;
+    height: 1.8em;
+    width: 6em;
+}
+
+.modal-frame #outerdiv #leftdiv table button:hover {
+    background-color: rgb(17, 3, 119);
+}
+
+.modal-frame #outerdiv #leftdiv table button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+    opacity: 0.35;
+}
+
+.modal-frame #outerdiv #rightdiv {
+    position: absolute;
+    position: relative;
+    height: 18em;
+    width: 50%;
+    margin-left: 24.8em;
+    border-bottom: 2px solid white;
+}
+
+.modal-frame #outerdiv #rightdiv table {
+    background: whitesmoke;
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+}
+
+.modal-frame #outerdiv #checkout-btn button {
+    position: absolute;
+    top: 24.5em;
+    left: 18em;
+    height: 4.5em;
+    width: 14em;
+    background-color: rgb(13, 4, 92);
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.modal-frame #outerdiv #checkout-btn button:hover {
+    background-color: rgb(17, 3, 119);
+}
+
+.modal-frame #outerdiv #checkout-btn button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+    opacity: 0.35;
+}
+
+table input.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+table select.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+table .my-custom-class {
+    background: aliceblue;
+    font-size: 55%;
+    font-weight: bold;
+    margin-bottom: -0.2em;
+    border: 2px black solid;
+}
+
+table .my-custom-class .arrow::after {
+    border-top-color: aliceblue;
+}
+
+.modal-frame #tablediv-chngpswd {
+    margin-top: 4em;
+    margin-left: 2.5em;
+}
+
+.modal-frame #tablediv-chngpswd table {
+    color: white;
+    margin-top: 1em;
+    margin-left: 6.5em;
+}
+
+.modal-frame #tablediv-chngpswd table tr th {
+    padding: 10px 25px 20px 40px;
+}
+
+.modal-frame #tablediv-chngpswd table tr td {
+    padding: 10px 0px 20px 0px;
+}
+
+.modal-frame #tablediv-chngpswd button {
+    width: 10em;
+    margin-top: 1em;
+    margin-right: 14em;
+    float: right;
+    padding: 0.3em 0em 0.3em 0em;
+    background-color: rgb(0, 0, 0);
+    color: rgb(54, 192, 59);
+    border: 2px rgb(54, 192, 59) solid;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.modal-frame #tablediv-chngpswd button:disabled {
+    background-color: rgb(90, 90, 90);
+    color: white;
+    border: 2px white solid;
+    opacity: 0.35;
+}
+
+.modal-frame #tablediv-chngpswd table input[type=password] {
+    background-color: #cccccc;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-frame #tablediv-chngpswd table input.ng-touched.ng-invalid {
+    border: 2px solid red
+}
+
+.modal-frame #outerdiv #leftdiv table input.ng-touched.ng-invalid {
+    border: 2px solid red
+}

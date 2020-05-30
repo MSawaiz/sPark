@@ -1,0 +1,35 @@
+<div id="backgroundImg">
+    <img src="assets/images/background.jpg" alt="">
+    <h1 id="title">
+        <img src="assets/images/logo.png" />
+        <div id="h">
+            sPARK
+        </div>
+    </h1>
+    <div id="exit">
+        <a (click)="close()">
+            <img src="assets/images/exit-button.png" alt="">
+            <p>EXIT </p>
+        </a>
+    </div>
+
+    <div id="fg-text">
+        <h1 id="sub-title" style="margin-top: 0.5em; font-size: 2.5em;">
+            SIGN IN AS
+        </h1>
+        <div id="gridContainer">
+            <div>
+                <a routerLink="adminsignin">
+                    <img src="assets/images//admin.jpg" alt="Admin Sign in">
+                    <label>Admin</label>
+                </a>
+            </div>
+            <div>
+                <a routerLink="optsignin">
+                    <img src="assets/images//operator.jpg" alt="Operator Sign in">
+                    <label>Operator</label>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

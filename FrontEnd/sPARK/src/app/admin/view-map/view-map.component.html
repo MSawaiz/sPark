@@ -1,0 +1,222 @@
+<div class="vmfg-title">
+    <label>
+        MAP INFORMATION
+    </label>
+</div>
+<div [ngSwitch]="page">
+    <div class="vmtablediv" *ngSwitchCase="'-1'" style="margin-top: -0.35em;">
+        <div id="floorfield">
+            <table>
+                <tr>
+                    <th>Number of Floors:</th>
+                    <td>{{maps.floor.length}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Entrance Posts:</th>
+                    <td>{{maps.post.entrancePost.length}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Exit Posts:</th>
+                    <td>{{maps.post.exitPost.length}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="floorFieldButtons">
+            <button style="color: blue; border-color: blue;" (click)="edtMap(updmap)">Update</button>
+        </div>
+
+        <div id="floorFieldButtons">
+            <button (click)="pageAct('inc')">Next</button>
+        </div>
+    </div>
+    <div class="vmtablediv" *ngSwitchDefault style="margin-top: -0.35em;">
+        <div id="back">
+            <button (click)="pageAct('dec')"><img src="assets/images/back2(green).png" alt="Back">
+            </button>
+        </div>
+        <div id="forward">
+            <button *ngIf="page!=maps.floor.length-1" (click)="pageAct('inc')"><img src="assets/images/forward.png"
+                    alt="Back">
+            </button>
+        </div>
+        <div id="hLane">
+            DETAILS OF FLOOR {{page+1}}
+        </div>
+
+        <div id="laneList">
+            <table class="table table-bordered table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>LANE</th>
+                        <th>SIZE (meters)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of maps.floor[page].lane">
+                        <td>{{i.name}}</td>
+                        <td>{{i.size}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="laneListButton">
+            <button (click)="edtFlr(page, updmap)">Update</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #updmap let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="vmpopup-title">
+            <label>
+                UPDATE MAP
+            </label>
+        </div>
+        <form #umf="ngForm" name="updform" action="" [ngSwitch]="upage">
+            <div class="mvmtablediv" *ngSwitchCase="'-1'">
+                <div class="floorfieldButton">
+                    <button style="color: blue; border-color: blue;" [disabled]="!umf.valid" (click)="updAct('add')">Add Floor</button>
+                    <button style="color: red; border-color: red;" [disabled]="!umf.valid" (click)="updAct('del')">Delete Floor</button>
+                </div>
+                <div class="floorfield">
+                    <table>
+                        <tr>
+                            <th>Enter No Of Entance Posts</th>
+                            <td>
+                                <div *ngIf="entrancep.touched && !entrancep.valid">
+                                    <div *ngIf="entrancep.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #entpp1="ngbPopover" triggers="manual">
+                                        {{entpp1.open()}}
+                                    </div>
+                                    <div *ngIf="entrancep.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain a number from 1 to 5!"
+                                        #entpp2="ngbPopover" triggers="manual">
+                                        {{entpp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="enp" pattern="[1-5]{1}" required #entrancep="ngModel"
+                                    [(ngModel)]='entrancePosts'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Enter No Of Exit Posts</th>
+                            <td>
+                                <div *ngIf="exitp.touched && !exitp.valid">
+                                    <div *ngIf="exitp.errors.required" popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #expp1="ngbPopover" triggers="manual">
+                                        {{expp1.open()}}
+                                    </div>
+                                    <div *ngIf="exitp.errors.pattern" popoverClass="my-custom-class"
+                                        ngbPopover="This field can only contain a number from 1 to 5!"
+                                        #expp2="ngbPopover" triggers="manual">
+                                        {{expp2.open()}}
+                                    </div>
+                                </div>
+                                <input type="text" name="exp" pattern="[1-5]{1}" required #exitp="ngModel"
+                                    [(ngModel)]='exitPosts'>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="laneListButton" style="margin-left: 1em;">
+                    <button [disabled]="!umf.valid" (click)="updMap()" (click)="modal.dismiss('OK')">Save Changes</button>
+                </div>
+            </div>
+            <div class="mvmtablediv" *ngSwitchCase="'-2'">
+                <div id="back">
+                    <button *ngIf="page==-1" (click)="updAct('ret')"><img src="assets/images/back2(green).png"
+                            alt="Back">
+                    </button>
+                </div>
+                <div class="hLane">
+                    ENTER DETAILS
+                </div>
+
+                <div class="tableFieldButton">
+                    <button (click)="addLane()">Add Lane</button>
+                </div>
+
+                <div class="laneList">
+                    <table class="table table-bordered table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>LANE </th>
+                                <th>SIZE (meters)</th>
+                                <th>DEL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let l of lane let i=index">
+                                <td>
+                                    <div *ngIf="lName.touched && !lName.valid">{{lnp.open()}} </div>
+                                    <div *ngIf="lName.valid">{{lnp.close()}}</div>
+                                    <input type="text" name=n{{i}} required popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #lnp="ngbPopover" triggers="manual"
+                                        #lName="ngModel" [(ngModel)]=l.name>
+                                </td>
+                                <td>
+                                    <div *ngIf="lSize.touched && !lSize.valid">
+                                        <div *ngIf="lSize.errors.required" popoverClass="my-custom-class"
+                                            ngbPopover="This field is required!" #lsp1="ngbPopover" triggers="manual">
+                                            {{lsp1.open()}}
+                                        </div>
+                                        <div *ngIf="lSize.errors.pattern" popoverClass="my-custom-class"
+                                            ngbPopover="This field can only contain number greater than zero!"
+                                            #lsp2="ngbPopover" triggers="manual">
+                                            {{lsp2.open()}}
+
+                                        </div>
+                                    </div>
+                                    <input type="text" name=s{{i}}
+                                        pattern="^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$" required
+                                        #lSize="ngModel" [(ngModel)]=l.size [(ngModel)]=l.remSize>
+                                </td>
+                                <td>
+                                    <button type="button" class="close" (click)="dltLane(i)">
+                                        <span>&times;</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="page==-1" class="laneListButton">
+                    <button [disabled]="!umf.valid" (click)='apdFlr()'>Confirm</button>
+                </div>
+                <div *ngIf="page!=-1" class="laneListButton">
+                    <button [disabled]="!umf.valid" (click)='updFlr(page)' (click)="modal.dismiss('OK')">Confirm</button>
+                </div>
+            </div>
+            <div class="mvmtablediv" *ngSwitchCase="'-3'">
+                <div id="back">
+                    <button (click)="updAct('ret')"><img src="assets/images/back2(green).png" alt="Back">
+                    </button>
+                </div>
+                <div class="hLane">
+                    Delete floor(s)
+                </div>
+                <div class="floorfield">
+                    <table style="margin-left: 5em;">
+                        <tr>
+                            <th>Select Floor(s):</th>
+                            <td>
+                                <div style="display: inline; padding-left: 2em;"
+                                    *ngFor="let f of maps.floor let i=index">
+                                    <input type="checkbox" name=i [(ngModel)]=dlfloor[i]>Floor {{i+1}}
+                                    <br *ngIf="((i+1)%3==0)">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="laneListButton">
+                    <button (click)='dltFloor()'>Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>

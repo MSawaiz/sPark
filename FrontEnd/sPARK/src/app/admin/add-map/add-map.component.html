@@ -1,0 +1,180 @@
+<div id="backgroundImg">
+    <img src="assets/images/background.jpg" alt="">
+    <h1 id="titleAM">
+        <img src="assets/images/logo.png" />
+        <div id="h">
+            sPARK
+        </div>
+    </h1>
+    <div id="fg-text-AM">
+        <form #f="ngForm" name="addform" action="">
+            <h1 id="sub-title" style="margin-top: 0.5em; font-size: 2.5em;">
+                ADD MAP
+            </h1>
+
+            <div id="map_main">
+                <table>
+                    <tr>
+                        <th>Number of Floors Entered:</th>
+                        <td>{{flrcount}}</td>
+                    </tr>
+                    <tr>
+                        <th>Enter No Of Entrance Posts:</th>
+                        <td>
+                            <div *ngIf="entrancep.touched && !entrancep.valid">
+                                <div *ngIf="entrancep.errors.required" popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #entpp1="ngbPopover" triggers="manual">
+                                    {{entpp1.open()}}
+                                </div>
+                                <div *ngIf="entrancep.errors.pattern" popoverClass="my-custom-class"
+                                    ngbPopover="This field can only contain a number from 1 to 5!" #entpp2="ngbPopover"
+                                    triggers="manual">
+                                    {{entpp2.open()}}
+                                </div>
+                            </div>
+                            <input type="text" name="enp" pattern="[1-5]{1}" required #entrancep="ngModel"
+                                [(ngModel)]='entrancePosts'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Enter No Of Exit Posts:</th>
+                        <td>
+                            <div *ngIf="exitp.touched && !exitp.valid">
+                                <div *ngIf="exitp.errors.required" popoverClass="my-custom-class"
+                                    ngbPopover="This field is required!" #expp1="ngbPopover" triggers="manual">
+                                    {{expp1.open()}}
+                                </div>
+                                <div *ngIf="exitp.errors.pattern" popoverClass="my-custom-class"
+                                    ngbPopover="This field can only contain a number from 1 to 5!" #expp2="ngbPopover"
+                                    triggers="manual">
+                                    {{expp2.open()}}
+                                </div>
+                            </div>
+                            <input type="text" name="exp" pattern="[1-5]{1}" required #exitp="ngModel"
+                                [(ngModel)]='exitPosts'>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="floorFieldButtons">
+
+                <button style="color: rgb(182, 2, 2); border-color: rgb(182, 2, 2);" [disabled]="flrcount==0"
+                    (click)="deleteFloor(dltfl)">Delete
+                    Floor</button>
+                <button style="color: blue; border-color: blue;" (click)="addFlr(addfl)">Add
+                    Floor</button>
+                <button [disabled]="!f.valid || flrcount==0" (click)="addMap()"
+                    (click)="modal.dismiss('OK')">Finish</button>
+            </div>
+        </form>
+        <div id="signout-AM">
+            <button (click)="logout()">SIGN OUT</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #dltfl let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                DELETE FLOOR(S)
+            </label>
+        </div>
+        <div class="amtablediv">
+            <div id="floorfield">
+                <table style="margin-left: 2em;">
+                    <tr>
+                        <th>Select Floor(s):</th>
+                        <td>
+                            <div style="display: inline; padding-left: 2em;" *ngFor="let f of maps.floor let i=index">
+                                <input type="checkbox" name=i [(ngModel)]=dlfloor[i]>Floor {{i+1}}
+                                <br *ngIf="((i+1)%3==0)">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="laneListButton">
+                <button (click)='dltFloor()' (click)='modal.dismiss(OK)'>Confirm</button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+
+<ng-template #addfl let-modal>
+    <div class="modal-frame">
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span>&times;</span>
+        </button>
+        <div id="popup-title">
+            <label>
+                ADD FLOOR
+            </label>
+        </div>
+
+        <div class="amtablediv">
+            <div id="hLane">
+                ENTER DETAILS
+            </div>
+
+            <div id="tableFieldButton">
+                <button (click)="addLane()">Add Lane</button>
+            </div>
+
+            <div id="laneList">
+                <form #fadd="ngForm" name="addform" action="">
+                    <table class="table table-bordered table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>LANE </th>
+                                <th>SIZE (meters)</th>
+                                <th>DEL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let l of lane let i=index">
+                                <td>
+                                    <div *ngIf="lName.touched && !lName.valid">{{lnp.open()}} </div>
+                                    <div *ngIf="lName.valid">{{lnp.close()}}</div>
+                                    <input type="text" name=n{{i}} required popoverClass="my-custom-class"
+                                        ngbPopover="This field is required!" #lnp="ngbPopover" triggers="manual"
+                                        #lName="ngModel" [(ngModel)]=l.name>
+                                </td>
+                                <td>
+                                    <div *ngIf="lSize.touched && !lSize.valid">
+                                        <div *ngIf="lSize.errors.required" popoverClass="my-custom-class"
+                                            ngbPopover="This field is required!" #lsp1="ngbPopover" triggers="manual">
+                                            {{lsp1.open()}}
+                                        </div>
+                                        <div *ngIf="lSize.errors.pattern" popoverClass="my-custom-class"
+                                            ngbPopover="This field can only contain number greater than zero!"
+                                            #lsp2="ngbPopover" triggers="manual">
+                                            {{lsp2.open()}}
+
+                                        </div>
+                                    </div>
+                                    <input type="text" name=s{{i}}
+                                        pattern="^(0*[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*)$" required
+                                        #lSize="ngModel" [(ngModel)]=l.size [(ngModel)]=l.remSize>
+                                </td>
+                                <td>
+                                    <button type="button" class="close" (click)="dltLane(i)">
+                                        <span>&times;</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div id="laneListButton">
+                <button [disabled]="!fadd.valid" (click)='apdFlr()' (click)='modal.dismiss(OK)'>Confirm</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
