@@ -74,64 +74,66 @@ app.use(function (err, req, res, next) {
 var tmpPark = require('./app_server/models/tempParkSchema');
 var camera = require('./app_server/models/cameraSchema');
 var vhcl = require('./app_server/models/parkedVehiclesSchema');
+const sleep = require('sleep-promise')
+const onvif = require('node-onvif');
+const fs = require('fs');
+const { compare } = require('bcrypt-nodejs');
 
-// setInterval((req, res, next) => {
-//   let options = {
-//     mode: 'text',
-//     //pythonPath: '/usr/bin/python',//only enable it if you have python installed different from default location
-//     pythonOptions: ['-u'], // get print results in real-time
-//     scriptPath: path.join(__dirname, 'public', 'pythonscripts'),//Path to your python script
-//     args: ['value1', 'value2']//If you want to add some variable that can be accessed in Python script by system.value1 etc
-//   };
+var device
 
-//   ps.PythonShell.run('myp.py', options, function (err, results) {//running your script file actually
-//     if (err) throw err;
-//     console.log(results);
-//   });
-// }, 2000)
+camera.find({}, async function (err, result) {
+  if (err) throw err;
 
+  for (cam of result) {
+    let options = {
+      mode: 'text',
+      pythonOptions: ['-u'], // get print results in real-time
+      scriptPath: path.join(__dirname, 'public', 'pythonscripts'),//Path to your python script
+      args: [cam.location.floor, cam.location.lane[0], cam.location.lane[1]]//If you want to add some variable that can be accessed in Python script by system.value1 etc
+    };
 
-// const sleep = require('sleep-promise')
-// camera.find({}, async function (err, result) {
-//   if (err) throw err;
+    device = new onvif.OnvifDevice({
+      xaddr: "http://" + cam.name + "/onvif/device_service",
+      user: 'admin',
+      pass: '123456'
+    });
+    device.init().then(() => {
+      return device.fetchSnapshot();
+    }).then((res) => {
+      fs.writeFileSync('public/pythonscripts/saved_img.jpg', res.body, { encoding: 'binary' });
+    }).catch((error) => {
+      console.error(error);
+    });
 
-//   for (cam of result) {
+    ps.PythonShell.run('checkVehicle.py', options, function (err, result) {//running your script file actually
+      if (err) throw err;
+      if (result[0] != "Processing failed") {
+        tmpPark.findOne({ 'vehicle.licensePlateNumber': result[0] }, function (err, data) {
+          if (err) throw err;
+          if (data != null) {
+            if (data.location.floor == result[1] && data.location.lane == result[2]) {
+              res.send("OK")
+            }
+            else {
+              vhcl.findOneAndUpdate({ 'vehicle.licensePlateNumber': result[0] }, {
+                location: {
+                  floor: result[1],
+                  lane: result[2]
+                }
+              },
+                function (err, result1) {
+                  if (err) throw err
+                  console.log(result1)
+                  res.send(result1)
+                });
+              data.remove()
+            }
+          }
+        });
+      }
+    });
+    await sleep(5000)
+  }
+})
 
-//     let options = {
-//       mode: 'text',
-//       pythonOptions: ['-u'], // get print results in real-time
-//       scriptPath: path.join(__dirname, 'public', 'pythonscripts'),//Path to your python script
-//       args: [cam.location.floor, cam.location.lane[0], cam.location.lane[1]]//If you want to add some variable that can be accessed in Python script by system.value1 etc
-//     };
-//     await sleep(5000)
-//     ps.PythonShell.run('checkVehicle.py', options, function (err, result) {//running your script file actually
-//       if (err) throw err;
-//       console.log(result);
-//       console.log(result[0])
-//       tmpPark.findOne({ 'vehicle.licensePlateNumber': result[0] }, function (err, data) {
-//         if (err) throw err;
-//         console.log(data)
-//         if (data.location.floor == result[1] && data.location.lane == result[2]) {
-//           res.send("OK")
-//           console.log("OK")
-//         }
-//         else {
-//           vhcl.findOneAndUpdate({ 'vehicle.licensePlateNumber': result[0] }, {
-//             location: {
-//               floor: result[1],
-//               lane: result[2]
-//             }
-//           },
-//             function (err, result1) {
-//               if (err) throw err
-//               console.log(result1)
-//               res.send(result1)
-//             });
-//           data.remove()
-//         }
-//       });
-//     });
-//     break //to be removed when more camera's are connected
-//   }
-// });
 module.exports = app;

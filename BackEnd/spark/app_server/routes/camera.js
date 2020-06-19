@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var fee = require('../controllers/cameraController');
+var cam = require('../controllers/cameraController');
 
 
 router.get('/',function(req,res,next){
     res.render("index");
 });
 
-router.get('/addCamera', fee.addCamera);
+router.get('/addCamera', cam.addCamera);
 
-router.get('/viewCamera', fee.viewCamera);
+router.get('/viewCamera', cam.viewCamera);
 
 module.exports = router;

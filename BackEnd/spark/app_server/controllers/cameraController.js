@@ -8,10 +8,10 @@ module.exports.cameraController = function (req, res) {
 module.exports.addCamera = function (req, res, next) {
     console.log("executed")
     var cameras = new camera({
-        name: "Camera 1",
+        name: "192.168.1.104:8080",
         location: {
             floor: 1,
-            lane: ["A1", "A2"]
+            lane: ["B1", "B2"]
         }
 
     });

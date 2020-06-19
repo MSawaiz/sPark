@@ -7,14 +7,14 @@ import os
 import http.client as httplib
 
 try:
-        webcam = cv2.VideoCapture(0)
-        
-        check, frame = webcam.read()
-            
-        webcam.release()
-        
-        image = cv2.line(frame, (int(frame.shape[1]*0.5),0), (int(frame.shape[1]*0.5),frame.shape[0]), (0, 255, 0), 2)
-        cv2.imwrite('public\\pythonscripts\\saved_img.jpg', image)
+        # webcam = cv2.VideoCapture(0)       
+        # check, frame = webcam.read()            
+        # webcam.release()
+
+        frame = cv2.imread('public\\pythonscripts\\saved_img.jpg')
+        # image = cv2.line(frame, (int(frame.shape[1]*0.5),0), (int(frame.shape[1]*0.5),frame.shape[0]), (0, 255, 0), 2)
+        # cv2.imwrite('public\\pythonscripts\\saved_img.jpg', image)
+
         headers = {"Content-type": "application/json",
                     "X-Access-Token": "zXYf0FY31h1bEb3Iy7ZeSMHaKM08PJs6qHWM"}
         conn = httplib.HTTPSConnection("dev.sighthoundapi.com",
@@ -40,12 +40,11 @@ try:
         else:
             print("Parking invalid")
 
-except(KeyboardInterrupt):
-        print("Turning off camera.")
-        webcam.release()
-        print("Camera off.")
-        print("Program ended.")
-        cv2.destroyAllWindows()
+# except(KeyboardInterrupt):
+#         print("Turning off camera.")
+#         webcam.release()
+#         print("Camera off.")
+#         print("Program ended.")
         
 except:
     print("Processing failed")
