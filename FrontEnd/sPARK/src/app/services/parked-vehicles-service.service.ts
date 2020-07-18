@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ParkedVehiclesServiceService {
-  private url = "http://localhost:3000/";
+  private url = "http://192.168.1.100:3000/";
   constructor(private http: HttpClient) { }
 
   doGet(obj) {
@@ -26,6 +26,7 @@ export class ParkedVehiclesServiceService {
     let body = JSON.stringify(veh)
     let url = this.url + "parVeh/addVehicle"
     return this.http.post(url, body, httpOptions)
+    
   }
 
   doUpdate(veh) {

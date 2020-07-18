@@ -70,13 +70,10 @@ module.exports.viewVehicle = function (req, res, next) {
         vh = { ...vh, 'vehicle.category': obj.size }
     }
     if (obj.floor != null) {
-        vh = { ...vh, 'location.floor': obj.floor }
+        vh = { ...vh, 'location.floor': parseInt(obj.floor) + 1 }
     }
     if (obj.lane != null) {
         vh = { ...vh, 'location.lane': obj.lane }
-    }
-    if (obj.cidatef != null) {
-        vh = { checkinTime: { $gte: "19-1-2020 00:00:00" } }
     }
     vhcl.find(vh, function (err, result) {
         if (err) throw err;
@@ -100,9 +97,9 @@ module.exports.updateVehicle = function (req, res, next) {
 
 module.exports.viewAllLPN = function (req, res, next) {
     vhcl.find({}, function (err, results) {
-        LPNs=[]
+        LPNs = []
         for (result of results) {
-            LPNs.push({"LPN":result.vehicle.licensePlateNumber})
+            LPNs.push({ "LPN": result.vehicle.licensePlateNumber })
         }
         res.send(LPNs);
     })

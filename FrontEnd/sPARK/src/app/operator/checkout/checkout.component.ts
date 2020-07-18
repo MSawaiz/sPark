@@ -245,6 +245,7 @@ export class CheckoutComponent implements OnInit {
       () => {
         this.tokenNum = null
         this.updateMap(sucs)
+        this.getAllLPN()
       }
     )
   }
@@ -350,7 +351,7 @@ export class CheckoutComponent implements OnInit {
     )
   }
 
-  allLPN: Vehicles[]
+  allLPN: any
   displayedColumns: string[] = ['LPN'];
   dataSource;
   
@@ -360,7 +361,6 @@ export class CheckoutComponent implements OnInit {
       data => { this.allLPN = data },
       err => console.error(err),
       () => {
-        console.log(this.allLPN);
         this.dataSource = new MatTableDataSource(this.allLPN);
       })
   }

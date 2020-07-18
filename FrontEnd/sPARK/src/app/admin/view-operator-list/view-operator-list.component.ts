@@ -3,6 +3,8 @@ import { OperatorService } from 'src/app/services/operator-service.service';
 import { MapServiceService } from 'src/app/services/map-service.service'
 import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { summaryFileName } from '@angular/compiler/src/aot/util';
+import { SafeMethodCall } from '@angular/compiler';
 
 @Component({
   selector: 'app-view-operator-list',
@@ -28,6 +30,16 @@ export class ViewOperatorListComponent implements OnInit {
   img: String
   imgName: string
   loggingAct
+  filterAct
+
+  cidatef: String = null
+  citimef: String = null
+  cidatet: String = null
+  citimet: String = null
+  codatef: String = null
+  cotimef: String = null
+  codatet: String = null
+  cotimet: String = null
 
   constructor(
     private oprService: OperatorService,
@@ -64,7 +76,7 @@ export class ViewOperatorListComponent implements OnInit {
       err => console.error(err),
       () => this.toast.success("Operator deleted successfully!")
     )
-    this.getOpr()
+    setTimeout(() => this.getOpr(), 500)
   }
 
   upload(event) {
@@ -95,7 +107,7 @@ export class ViewOperatorListComponent implements OnInit {
       err => console.error(err),
       () => this.toast.success("Operator updated successfully!")
     )
-    this.getOpr();
+    setTimeout(() => this.getOpr(), 500)
   }
 
   showAct(id, modal) {
@@ -103,6 +115,7 @@ export class ViewOperatorListComponent implements OnInit {
     for (let opr of this.operators.opr) {
       if (opr._id == id) {
         this.loggingAct = opr.loggingActivity.reverse()
+        this.filterAct = opr.loggingActivity.reverse()
         this.opid = id
       }
     }
@@ -138,6 +151,176 @@ export class ViewOperatorListComponent implements OnInit {
         this.loggingAct = opr.loggingActivity.reverse()
         this.opid = id
       }
+    }
+  }
+
+  search() {
+
+    var logAct = this.filterAct
+    this.loggingAct = []
+    var signinStart = null
+    var signinEnd = null
+    var signoutStart = null
+    var signoutEnd = null
+
+    if (this.cidatef == '') this.cidatef = null
+    if (this.citimef == '') this.citimef = null
+    if (this.codatef == '') this.codatef = null
+    if (this.cotimef == '') this.cotimef = null
+    if (this.cidatet == '') this.cidatet = null
+    if (this.citimet == '') this.citimet = null
+    if (this.codatet == '') this.codatet = null
+    if (this.cotimet == '') this.cotimet = null
+
+
+    if (this.cidatef != null && this.citimef != null)
+      signinStart = new Date(this.cidatef + "T" + this.citimef)
+    else if (this.cidatef != null && this.citimef == null)
+      signinStart = new Date(this.cidatef + "T00:00:00")
+    else
+      signinStart = new Date("2018-01-01T00:00:00")
+
+    if (this.cidatet != null && this.citimet != null)
+      signinEnd = new Date(this.cidatet + "T" + this.citimet)
+    else if (this.cidatet != null && this.citimet == null)
+      signinEnd = new Date(this.cidatet + "T23:59:59")
+    else
+      signinEnd = new Date()
+
+    if (this.codatef != null && this.cotimef != null)
+      signoutStart = new Date(this.codatef + "T" + this.cotimef)
+    else if (this.codatef != null && this.cotimef == null)
+      signoutStart = new Date(this.codatef + "T00:00:00")
+    else
+      signoutStart = new Date("2018-01-01T00:00:00")
+
+    if (this.codatet != null && this.cotimet != null)
+      signoutEnd = new Date(this.codatet + "T" + this.cotimet)
+    else if (this.codatet != null && this.cotimet == null)
+      signoutEnd = new Date(this.codatet + "T23:59:59")
+    else
+      signoutEnd = new Date()
+
+    for (var act of logAct) {
+
+      if (act.signoutTime != null) {
+        var log = act.signinTime.split(" ")
+        var logDate = log[0].split("-")
+        var sint = new Date(logDate[2] + "-" + logDate[1] + "-" + logDate[0] + "T" + log[1])
+
+        log = act.signoutTime.split(" ")
+        logDate = log[0].split("-")
+        var soutt = new Date(logDate[2] + "-" + logDate[1] + "-" + logDate[0] + "T" + log[1])
+
+        if (this.cidatef != null && this.cidatet != null && this.codatef != null && this.codatet != null) {
+          if ((sint.getTime() >= signinStart.getTime() && sint.getTime() <= signinEnd.getTime())
+            && (soutt.getTime() >= signoutStart.getTime() && soutt.getTime() <= signoutEnd.getTime())) {
+            this.loggingAct.push(act)
+            console.log("1")
+          }
+        }
+        else if (this.codatet == null && this.cidatef != null && this.cidatet != null && this.codatef != null) {
+          if (sint.getTime() >= signinStart.getTime() && sint.getTime() <= signinEnd.getTime()
+            && soutt.getTime() >= signoutStart.getTime()) {
+            this.loggingAct.push(act)
+            console.log("2")
+          }
+        }
+        else if (this.cidatef != null && this.cidatet != null && this.codatef == null && this.codatet != null) {
+          if (sint.getTime() >= signinStart.getTime() && sint.getTime() <= signinEnd.getTime()
+            && soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("3")
+          }
+        }
+        else if (this.cidatef != null && this.cidatet == null && this.codatef != null && this.codatet != null) {
+          if (sint.getTime() >= signinStart.getTime() && soutt.getTime() >= signoutStart.getTime()
+            && soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("4")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet != null && this.codatef != null && this.codatet != null) {
+          if (sint.getTime() <= signinEnd.getTime() && soutt.getTime() >= signoutStart.getTime()
+            && soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("5")
+          }
+        }
+        else if (this.cidatef != null && this.cidatet != null && this.codatef == null && this.codatet == null) {
+          if (sint.getTime() >= signinStart.getTime() && sint.getTime() <= signinEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("6")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet == null && this.codatef != null && this.codatet != null) {
+          if (soutt.getTime() >= signoutStart.getTime() && soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("7")
+          }
+        }
+        else if (this.cidatef != null && this.cidatet == null && this.codatef != null && this.codatet == null) {
+          if (sint.getTime() >= signinStart.getTime() && sint.getTime() >= signoutStart.getTime()) {
+            this.loggingAct.push(act)
+            console.log("8")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet != null && this.codatef == null && this.codatet != null) {
+          if (sint.getTime() <= signinEnd.getTime() && soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("9")
+          }
+        }
+        else if (this.cidatef != null && this.cidatet == null && this.codatef == null && this.codatet != null) {
+          if (sint.getTime() >= signinStart.getTime() && soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("10")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet != null && this.codatef != null && this.codatet == null) {
+          if (soutt.getTime() <= signinEnd.getTime() && soutt.getTime() >= signoutStart.getTime()) {
+            this.loggingAct.push(act)
+            console.log("11")
+          }
+        }
+        else if (this.cidatef != null && this.cidatet == null && this.codatef == null && this.codatet == null) {
+          if (sint.getTime() >= signinStart.getTime()) {
+            this.loggingAct.push(act)
+            console.log("12")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet != null && this.codatef == null && this.codatet == null) {
+          if (sint.getTime() <= signinEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("13")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet == null && this.codatef != null && this.codatet == null) {
+          if (soutt.getTime() >= signoutStart.getTime()) {
+            this.loggingAct.push(act)
+            console.log("14")
+          }
+        }
+        else if (this.cidatef == null && this.cidatet == null && this.codatef == null && this.codatet != null) {
+          if (soutt.getTime() <= signoutEnd.getTime()) {
+            this.loggingAct.push(act)
+            console.log("15")
+          }
+        }
+      }
+    }
+    if (this.cidatef == null && this.citimef == null && this.codatef == null && this.cotimef == null
+      && this.cidatet == null && this.citimet == null && this.codatet == null && this.cotimet == null)
+      this.loggingAct = this.filterAct
+    else {
+      this.cidatef = null
+      this.citimef = null
+      this.codatef = null
+      this.cotimef = null
+      this.cidatet = null
+      this.citimet = null
+      this.codatet = null
+      this.cotimet = null
     }
   }
 

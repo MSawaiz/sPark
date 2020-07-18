@@ -57,7 +57,7 @@ module.exports.viewarchive = function (req, res, next) {
         vh = { ...vh, 'vehicle.category': obj.size }
     }
     if (obj.floor != null) {
-        vh = { ...vh, 'location.floor': obj.floor }
+        vh = { ...vh, 'location.floor': parseInt(obj.floor) + 1 }
     }
     if (obj.lane != null) {
         vh = { ...vh, 'location.lane': obj.lane }

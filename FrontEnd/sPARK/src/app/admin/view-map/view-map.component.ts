@@ -103,7 +103,7 @@ export class ViewMapComponent implements OnInit {
       err => console.error(err),
       () => this.toast.success("Floor updated successfully!")
     )
-    this.getMap();
+    setTimeout(() => this.getMap(), 500)
   }
 
   dltFloor() {
@@ -144,7 +144,7 @@ export class ViewMapComponent implements OnInit {
       err => console.error(err),
       () => this.toast.success("Map updated successfully!")
     )
-    this.getMap();
+    setTimeout(() => this.getMap(), 500)
   }
 
   closeResult

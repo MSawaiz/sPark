@@ -98,13 +98,13 @@ module.exports.viewOpr = function (req, res, next) {
 
 module.exports.updateOperator = function (req, res, next) {
     var id = req.body.id
-    var pass = req.body.pass
+    var pass = usr.hashPassword(req.body.pass)
 
     let base64Image = req.body.img.split(';base64,').pop();
     fs.writeFile('public/images/' + req.body.imgName, base64Image, { encoding: 'base64' }, function (err) {
         if (err) throw err
     });
-
+    
     if (pass != null) {
         user.findByIdAndUpdate(id, { password: pass },
             function (err) {

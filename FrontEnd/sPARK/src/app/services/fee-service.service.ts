@@ -10,7 +10,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class FeeServiceService {
-  private url = "http://localhost:3000/";
+  private url = "http://192.168.1.100:3000/";
 
   constructor(private http: HttpClient) { }
 

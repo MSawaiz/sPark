@@ -192,7 +192,7 @@
         </button>
         <div class="oapopup-title">
             <div id="refresh">
-                    <button (click)="refresh(opid)">
+                <button (click)="refresh(opid)">
                     <figure>
                         <img src="assets/images/refresh.png" alt="Refresh Icon">
                         <figcaption>Refresh</figcaption>
@@ -251,27 +251,29 @@
                 <table>
                     <tr>
                         <th>Sign in Date</th>
-                        <td><input type="date" name="datef" [(ngModel)]="cidatef"></td>
-                        <td style="padding-left: 1em;">to <input disabled type="date" name="datet"
+                        <td><input type="date" name="cidatef" #cidfrom="ngModel" [(ngModel)]="cidatef"></td>
+                        <td style="padding-left: 1em;">to <input type="date" name="cidatet" #cidto="ngModel"
                                 [(ngModel)]="cidatet"></td>
                     </tr>
                     <tr>
                         <th>Sign in Time</th>
-                        <td><input type="time" name="timef" [(ngModel)]="citimef"></td>
-                        <td style="padding-left: 1em;">to <input disabled type="time" name="timet"
-                                [(ngModel)]="citimet"></td>
+                        <td><input [disabled]="(cidfrom.value==null || cidfrom.value=='')" type="time" name="citimef"
+                                [(ngModel)]="citimef"></td>
+                        <td style="padding-left: 1em;">to <input [disabled]="(cidto.value==null || cidto.value=='' )"
+                                type="time" name="citimet" [(ngModel)]="citimet"></td>
                     </tr>
                     <tr>
                         <th>Sign out Date</th>
-                        <td><input type="date" name="datef" [(ngModel)]="codatef"></td>
-                        <td style="padding-left: 1em;">to <input disabled type="date" name="datet"
+                        <td><input type="date" name="codatef" #codfrom="ngModel" [(ngModel)]="codatef"></td>
+                        <td style="padding-left: 1em;">to <input type="date" name="codatet" #codto="ngModel"
                                 [(ngModel)]="codatet"></td>
                     </tr>
                     <tr>
                         <th>Sign out Time</th>
-                        <td><input type="time" name="timef" [(ngModel)]="cotimef"></td>
-                        <td style="padding-left: 1em;">to <input disabled type="time" name="timet"
-                                [(ngModel)]="cotimet"></td>
+                        <td><input [disabled]="(codfrom.value==null || codfrom.value=='')" type="time" name="cotimef"
+                                [(ngModel)]="cotimef"></td>
+                        <td style="padding-left: 1em;">to <input [disabled]="(codto.value==null || codto.value=='')"
+                                type="time" name="cotimet" [(ngModel)]="cotimet"></td>
                     </tr>
                 </table>
                 <button style="margin-top: 1%;" (click)="search()" (click)="modal.close('OK')">Search</button>

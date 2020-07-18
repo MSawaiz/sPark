@@ -67,6 +67,8 @@ export class CheckinComponent implements OnInit {
   parkingSpace: number
   remParkingSpace: number
 
+  LPNs
+
   ngOnInit() {
     this.signinCom.oprId$.subscribe(
       data => this.setSignObj(data))
@@ -104,28 +106,42 @@ export class CheckinComponent implements OnInit {
       data => { this.veh = data },
       err => console.error(err),
       () => {
-        console.log(this.veh)
-        if (this.veh.objects[0] != undefined) {
-          var datetime = new Date()
-          this.tokenNum = this.veh.objects[0].vehicleAnnotation.licenseplate.attributes.system.string.name
-          this.checkInTime = datetime.getDate().toString().padStart(2, "0") + "-" + (datetime.getMonth() + 1).toString().padStart(2, "0")
-            + "-" + datetime.getFullYear() + " " + datetime.getHours().toString().padStart(2, "0") + ":" +
-            datetime.getMinutes().toString().padStart(2, "0") + ":" + datetime.getSeconds().toString().padStart(2, "0")
-          var veh = {
-            make: this.veh.objects[0].vehicleAnnotation.attributes.system.make.name,
-            model: this.veh.objects[0].vehicleAnnotation.attributes.system.model.name
-          }
-          var ret
-          this.vehService.doGetCat(veh).subscribe(
-            data => { ret = data },
-            err => console.error(err),
-            () => {
-              this.category = ret
-            })
-          this.getLane()
-        }
-        else
-          this.toast.error('Vehicle identification failed')
+        this.parVehService.doGetAllLPN().subscribe(
+          data => { this.LPNs = data },
+          err => console.error(err),
+          () => {
+            if (this.veh.objects[0] != undefined && this.veh.objects[0].vehicleAnnotation.licenseplate != undefined) {
+              var datetime = new Date()
+              this.tokenNum = this.veh.objects[0].vehicleAnnotation.licenseplate.attributes.system.string.name
+              var newToken = true
+              for (var LPN of this.LPNs) {
+                if (LPN.LPN == this.tokenNum)
+                  newToken = false
+              }
+              if (newToken) {
+                this.checkInTime = datetime.getDate().toString().padStart(2, "0") + "-" + (datetime.getMonth() + 1).toString().padStart(2, "0")
+                  + "-" + datetime.getFullYear() + " " + datetime.getHours().toString().padStart(2, "0") + ":" +
+                  datetime.getMinutes().toString().padStart(2, "0") + ":" + datetime.getSeconds().toString().padStart(2, "0")
+                var veh = {
+                  make: this.veh.objects[0].vehicleAnnotation.attributes.system.make.name,
+                  model: this.veh.objects[0].vehicleAnnotation.attributes.system.model.name
+                }
+                var ret
+                this.vehService.doGetCat(veh).subscribe(
+                  data => { ret = data },
+                  err => console.error(err),
+                  () => {
+                    this.category = ret
+                  })
+                this.getLane()
+              }
+              else
+              this.toast.warning('Vehicle already exists')              
+            }
+            else
+              this.toast.error('Vehicle identification failed')
+
+          })
       }
     );
   }
